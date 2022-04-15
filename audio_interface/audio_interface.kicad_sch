@@ -3506,8 +3506,14 @@
     (path "/92aa0299-bc2d-4ffe-b831-357ccd9e90d2/3fe62a0e-3269-4d5b-87e7-fbfb818fa77d"
       (reference "#PWR093") (unit 1) (value "GNDD") (footprint "")
     )
+    (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/40abb8eb-7c16-4e45-99dc-6ef5b0075487"
+      (reference "#PWR0101") (unit 1) (value "GNDA") (footprint "")
+    )
     (path "/92aa0299-bc2d-4ffe-b831-357ccd9e90d2/2775c0b6-7485-48ac-909d-6cfa4be18753"
       (reference "#PWR0102") (unit 1) (value "GNDD") (footprint "")
+    )
+    (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/f729a5f7-3888-40f1-97e9-67a75d69b3cb"
+      (reference "#PWR0103") (unit 1) (value "GNDA") (footprint "")
     )
     (path "/92aa0299-bc2d-4ffe-b831-357ccd9e90d2/11e69a57-bb2a-456c-9e1e-c6387a4a379c"
       (reference "#PWR0105") (unit 1) (value "GNDD") (footprint "")
@@ -3560,6 +3566,9 @@
     (path "/5b783545-c1fd-4e09-8f29-1e860b36e664"
       (reference "C13") (unit 1) (value "0.1u") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
     )
+    (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/83ed3325-163c-4afa-93c5-49baeb4cd081"
+      (reference "C14") (unit 1) (value "1u") (footprint "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder")
+    )
     (path "/c2ef756d-095e-4837-8290-91c822d5f285"
       (reference "C15") (unit 1) (value "0.1u") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
     )
@@ -3592,6 +3601,9 @@
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/4bdbd993-d313-4f1b-b82e-bec9dd0ff733"
       (reference "C25") (unit 1) (value "220p") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
+    )
+    (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/50a79b23-d290-4b14-9a7d-43014e5cb72b"
+      (reference "C26") (unit 1) (value "1u") (footprint "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder")
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/9e48b6b8-c690-4de8-a2a4-679f6638f482"
       (reference "C27") (unit 1) (value "10n") (footprint "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder")
