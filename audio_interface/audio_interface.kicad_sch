@@ -1787,7 +1787,7 @@
     (property "Value" "ADJ_OUT_M" (id 1) (at 156.21 74.9299 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded" (id 2) (at 151.13 78.74 0)
+    (property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm" (id 2) (at 151.13 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 151.13 78.74 0)
@@ -1975,7 +1975,7 @@
     (property "Value" "ADJ_OUT_I" (id 1) (at 111.76 152.3999 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded" (id 2) (at 106.68 156.21 0)
+    (property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm" (id 2) (at 106.68 156.21 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 106.68 156.21 0)
@@ -2523,7 +2523,7 @@
     (property "Value" "I_BIAS" (id 1) (at 264.16 35.5599 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded" (id 2) (at 259.08 39.37 0)
+    (property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm" (id 2) (at 259.08 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 259.08 39.37 0)
@@ -2560,7 +2560,7 @@
     (property "Value" "DIFF_OUT_M" (id 1) (at 96.52 70.6119 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded" (id 2) (at 88.9 66.04 0)
+    (property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm" (id 2) (at 88.9 66.04 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 88.9 66.04 0)
@@ -2740,7 +2740,7 @@
     (property "Value" "BIAS_OUT_I" (id 1) (at 157.48 176.0219 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded" (id 2) (at 149.86 171.45 0)
+    (property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm" (id 2) (at 149.86 171.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 149.86 171.45 0)
@@ -2793,7 +2793,7 @@
     (property "Value" "M_BIAS" (id 1) (at 264.16 59.6899 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded" (id 2) (at 259.08 63.5 0)
+    (property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm" (id 2) (at 259.08 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 259.08 63.5 0)
@@ -2830,7 +2830,7 @@
     (property "Value" "BIAS_OUT_M" (id 1) (at 205.74 74.9299 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded" (id 2) (at 200.66 78.74 0)
+    (property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm" (id 2) (at 200.66 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 200.66 78.74 0)
@@ -3702,7 +3702,7 @@
       (reference "J2") (unit 1) (value "AudioJack2") (footprint "Connector_Audio:Jack_6.35mm_Neutrik_NMJ4HFD3_Horizontal")
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/9bda60cc-a821-4b43-9290-9cbd01d4101f"
-      (reference "J3") (unit 1) (value "EXT_9V") (footprint "Connector_BarrelJack:BarrelJack_CUI_PJ-063AH_Horizontal")
+      (reference "J3") (unit 1) (value "EXT_9V") (footprint "Connector_BarrelJack:BarrelJack_GCT_DCJ200-10-A_Horizontal")
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/dc568067-7751-401f-84a8-60bd5c3ab826"
       (reference "J4") (unit 1) (value "PROBE_GND") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical")
@@ -3809,6 +3809,9 @@
     (path "/92aa0299-bc2d-4ffe-b831-357ccd9e90d2/9f8f9d2a-c23b-4648-8b74-3124362430b7"
       (reference "JP23") (unit 1) (value "HPFD_n") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm_NumberLabels")
     )
+    (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/7dbb2fc9-ee7c-4a13-a074-2dbb8ae45f20"
+      (reference "JP24") (unit 1) (value "Jumper_2_Bridged") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
+    )
     (path "/92aa0299-bc2d-4ffe-b831-357ccd9e90d2/00aefffa-7d6f-45ca-91c8-39c222a6f0e9"
       (reference "JP27") (unit 1) (value "Jumper_2_Bridged") (footprint "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder")
     )
@@ -3909,28 +3912,28 @@
       (reference "SW1") (unit 1) (value "SW_Push") (footprint "Button_Switch_THT:SW_PUSH_6mm")
     )
     (path "/83cfbbe6-d662-44d0-9748-749c34e3a9b6"
-      (reference "TP1") (unit 1) (value "DIFF_OUT_M") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP1") (unit 1) (value "DIFF_OUT_M") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/21487f62-9c22-4ed1-b7e0-fe4a53513e13"
-      (reference "TP2") (unit 1) (value "ADJ_OUT_I") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP2") (unit 1) (value "ADJ_OUT_I") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/058a7166-e51e-486c-9459-32376e832a4f"
-      (reference "TP3") (unit 1) (value "ADJ_OUT_M") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP3") (unit 1) (value "ADJ_OUT_M") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/9704a3e9-5482-47db-8e21-371e5cc974bc"
-      (reference "TP4") (unit 1) (value "BIAS_OUT_I") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP4") (unit 1) (value "BIAS_OUT_I") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/9de977c7-533f-45b9-9358-265f7d3b6076"
-      (reference "TP5") (unit 1) (value "BIAS_OUT_M") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP5") (unit 1) (value "BIAS_OUT_M") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/7f820a05-8bc0-4fdd-a491-41739bf802d8"
-      (reference "TP6") (unit 1) (value "I_BIAS") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP6") (unit 1) (value "I_BIAS") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/9b0622c7-a7c4-468a-a0e2-913087e96668"
-      (reference "TP7") (unit 1) (value "M_BIAS") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP7") (unit 1) (value "M_BIAS") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/fc734adb-fcad-43e3-aaca-d5f499293016"
-      (reference "TP8") (unit 1) (value "9V") (footprint "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded")
+      (reference "TP8") (unit 1) (value "9V") (footprint "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm")
     )
     (path "/92aa0299-bc2d-4ffe-b831-357ccd9e90d2/ae1e8de8-cf2c-4ad4-8428-bc08c60bb9b8"
       (reference "TP9") (unit 1) (value "TestPoint") (footprint "TestPoint:TestPoint_Pad_1.5x1.5mm")
@@ -3987,10 +3990,10 @@
       (reference "U6") (unit 1) (value "LT1931") (footprint "Package_TO_SOT_SMD:TSOT-23-5_HandSoldering")
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/e25ee0bf-65fd-4d7b-a3f4-6465bdc4c426"
-      (reference "U7") (unit 1) (value "TPS7A49") (footprint "Package_SO:VSSOP-8_3.0x3.0mm_P0.65mm")
+      (reference "U7") (unit 1) (value "TPS7A49") (footprint "Package_SO:MSOP-8-1EP_3x3mm_P0.65mm_EP1.68x1.88mm_ThermalVias")
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/c93f38bc-797e-40ff-9143-7684fafc29ad"
-      (reference "U8") (unit 1) (value "TPS7A30") (footprint "Package_SO:VSSOP-8_3.0x3.0mm_P0.65mm")
+      (reference "U8") (unit 1) (value "TPS7A30") (footprint "Package_SO:MSOP-8-1EP_3x3mm_P0.65mm_EP1.68x1.88mm_ThermalVias")
     )
     (path "/a848ccfc-ed5a-4abb-b243-1d477e4499b6/589ea6ea-31af-486b-bfc7-3f9207d8c7e9"
       (reference "U9") (unit 1) (value "L4931") (footprint "Package_TO_SOT_SMD:TO-252-2")
