@@ -1,0 +1,10 @@
+23:47:20 **** Incremental Build of configuration Debug for project audio_usb_test ****
+make -j16 all 
+arm-none-eabi-size   audio_usb_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25124	     64	   3264	  28452	   6f24	audio_usb_test.elf
+Finished building: default.size.stdout
+ 
+
+23:47:20 Build Finished. 0 errors, 0 warnings. (took 413ms)
+

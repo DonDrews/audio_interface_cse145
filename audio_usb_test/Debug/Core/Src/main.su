@@ -1,0 +1,13 @@
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h:189:24:tud_cdc_available	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h:199:24:tud_cdc_read	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h:219:24:tud_cdc_write	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h:229:24:tud_cdc_write_flush	8	static
+../Core/Src/main.c:65:6:cdc_task	80	static
+../Core/Src/main.c:91:6:tud_cdc_line_state_cb	24	static
+../Core/Src/main.c:107:6:tud_cdc_rx_cb	16	static
+../Core/Src/main.c:118:5:main	8	static
+../Core/Src/main.c:166:6:SystemClock_Config	112	static
+../Core/Src/main.c:209:13:MX_I2S1_Init	8	static
+../Core/Src/main.c:241:13:MX_USB_PCD_Init	8	static
+../Core/Src/main.c:273:13:MX_GPIO_Init	16	static
+../Core/Src/main.c:289:6:Error_Handler	8	static,ignoring_inline_asm

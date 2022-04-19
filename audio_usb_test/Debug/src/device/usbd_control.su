@@ -1,0 +1,9 @@
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_types.h:495:26:tu_edpt_dir	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:66:20:_status_stage_xact	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:74:6:tud_control_status	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:87:13:_data_stage_xact	32	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:104:6:tud_control_xfer	40	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:141:6:usbd_control_reset	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:147:6:usbd_control_set_complete_callback	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:153:6:usbd_control_set_request	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:164:6:usbd_control_xfer_cb	32	static

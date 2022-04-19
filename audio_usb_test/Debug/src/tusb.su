@@ -1,0 +1,13 @@
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_types.h:495:26:tu_edpt_dir	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_types.h:501:23:tu_edpt_number	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_types.h:511:24:tu_edpt_packet_size	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_types.h:519:31:tu_desc_next	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_types.h:525:23:tu_desc_type	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_types.h:530:23:tu_desc_len	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:39:6:tusb_init	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:52:6:tusb_inited	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:71:6:tu_edpt_claim	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:95:6:tu_edpt_release	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:117:6:tu_edpt_validate	32	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:156:6:tu_edpt_bind_driver	48	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:175:10:tu_desc_get_interface_total_len	24	static

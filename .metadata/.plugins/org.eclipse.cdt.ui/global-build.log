@@ -1,0 +1,24 @@
+23:47:13 **** Incremental Build of configuration Debug for project audio_usb_test ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F042x6 -c -I../Core/Inc -I"C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src" -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:209:13: warning: 'MX_I2S1_Init' defined but not used [-Wunused-function]
+  209 | static void MX_I2S1_Init(void)
+      |             ^~~~~~~~~~~~
+arm-none-eabi-gcc -o "audio_usb_test.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\donsp\Documents\GitHub\audio_interface\audio_usb_test\STM32F042K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="audio_usb_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: audio_usb_test.elf
+ 
+arm-none-eabi-size   audio_usb_test.elf 
+arm-none-eabi-objdump -h -S  audio_usb_test.elf  > "audio_usb_test.list"
+   text	   data	    bss	    dec	    hex	filename
+  25124	     64	   3264	  28452	   6f24	audio_usb_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: audio_usb_test.list
+ 
+23:47:20 **** Incremental Build of configuration Debug for project audio_usb_test ****
+make -j16 all 
+arm-none-eabi-size   audio_usb_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25124	     64	   3264	  28452	   6f24	audio_usb_test.elf
+Finished building: default.size.stdout
+ 

@@ -733,3 +733,21 @@
 2022-04-17 16:56:39,417 [INFO] ProjectBuilder:4183 - Time for Generating toolchain IDE Files: 951mS.
 2022-04-17 16:56:39,417 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.
 2022-04-17 16:56:39,420 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 0mS.
+2022-04-18 14:45:51,451 [INFO] Activator:177 - 
+
+
+2022-04-18 14:45:51,453 [INFO] Activator:178 - !SESSION log4j initialized
+2022-04-18 14:45:55,775 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-04-18 14:52:41,893 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_External_tool_project_builders_migration_2 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-04-18 14:52:41,895 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_Prompt_before_migrating_3 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-04-18 14:52:41,896 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-04-18 15:04:34,944 [INFO] Activator:177 - 
+
+
+2022-04-18 15:04:34,946 [INFO] Activator:178 - !SESSION log4j initialized
+2022-04-18 15:04:38,645 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-04-18 23:00:49,488 [INFO] Activator:177 - 
+
+
+2022-04-18 23:00:49,490 [INFO] Activator:178 - !SESSION log4j initialized
+2022-04-18 23:00:53,430 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
