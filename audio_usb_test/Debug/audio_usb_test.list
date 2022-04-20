@@ -7,43 +7,43 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         000071ec  080000c0  080000c0  000100c0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       000001c4  080072ac  080072ac  000172ac  2**2
+  2 .rodata       000001b8  080072ac  080072ac  000172ac  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08007470  08007470  00020038  2**0
+  3 .ARM.extab    00000000  08007464  08007464  00020038  2**0
                   CONTENTS
-  4 .ARM          00000000  08007470  08007470  00020038  2**0
+  4 .ARM          00000000  08007464  08007464  00020038  2**0
                   CONTENTS
-  5 .preinit_array 00000000  08007470  08007470  00020038  2**0
+  5 .preinit_array 00000000  08007464  08007464  00020038  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08007470  08007470  00017470  2**2
+  6 .init_array   00000004  08007464  08007464  00017464  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08007474  08007474  00017474  2**2
+  7 .fini_array   00000004  08007468  08007468  00017468  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000038  20000000  08007478  00020000  2**2
+  8 .data         00000038  20000000  0800746c  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000ae8  20000038  080074b0  00020038  2**2
+  9 .bss          0000075c  20000038  080074a4  00020038  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000b20  080074b0  00020b20  2**0
+ 10 ._user_heap_stack 00000604  20000794  080074a4  00020794  2**0
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  00020038  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000fe14  00000000  00000000  00020060  2**0
+ 12 .debug_info   0000fe13  00000000  00000000  00020060  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00002cec  00000000  00000000  0002fe74  2**0
+ 13 .debug_abbrev 00002ce3  00000000  00000000  0002fe73  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000d18  00000000  00000000  00032b60  2**3
+ 14 .debug_aranges 00000d18  00000000  00000000  00032b58  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000c40  00000000  00000000  00033878  2**3
+ 15 .debug_ranges 00000c40  00000000  00000000  00033870  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001acc6  00000000  00000000  000344b8  2**0
+ 16 .debug_macro  0001acc6  00000000  00000000  000344b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000edae  00000000  00000000  0004f17e  2**0
+ 17 .debug_line   0000edae  00000000  00000000  0004f176  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00098f35  00000000  00000000  0005df2c  2**0
+ 18 .debug_str    00098f34  00000000  00000000  0005df24  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  000f6e61  2**0
+ 19 .comment      00000050  00000000  00000000  000f6e58  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002e90  00000000  00000000  000f6eb4  2**2
+ 20 .debug_frame  00002e90  00000000  00000000  000f6ea8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -509,28 +509,28 @@ static inline uint16_t tud_audio_write_support_ff(uint8_t ff_idx, const void * d
  8000434:	bd80      	pop	{r7, pc}
 
 08000436 <audio_task>:
+uint16_t i2s_dummy_buffer[CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO][CFG_TUD_AUDIO_FUNC_1_TX_SUPP_SW_FIFO_SZ/2];   // Ensure half word aligned
+
+void audio_task(void);
 //--------------------------------------------------------------------+
 // AUDIO Task
 //--------------------------------------------------------------------+
+ 8000436:	b580      	push	{r7, lr}
+ 8000438:	af00      	add	r7, sp, #0
 
 void audio_task(void)
 {
- 8000436:	b580      	push	{r7, lr}
- 8000438:	af00      	add	r7, sp, #0
-  // Yet to be filled - e.g. put meas data into TX FIFOs etc.
-  // asm("nop");
-}
  800043a:	46c0      	nop			; (mov r8, r8)
  800043c:	46bd      	mov	sp, r7
  800043e:	bd80      	pop	{r7, pc}
 
 08000440 <tud_audio_set_req_ep_cb>:
+}
+
+//--------------------------------------------------------------------+
 // Application Callback API Implementations
 //--------------------------------------------------------------------+
 
-// Invoked when audio class specific set request received for an EP
-bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_request, uint8_t *pBuff)
-{
  8000440:	b580      	push	{r7, lr}
  8000442:	b086      	sub	sp, #24
  8000444:	af00      	add	r7, sp, #0
@@ -540,11 +540,11 @@ bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  800044c:	18fb      	adds	r3, r7, r3
  800044e:	1c02      	adds	r2, r0, #0
  8000450:	701a      	strb	r2, [r3, #0]
+// Invoked when audio class specific set request received for an EP
+bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_request, uint8_t *pBuff)
+{
   (void) rhport;
   (void) pBuff;
-
-  // We do not support any set range requests here, only current value requests
-  TU_VERIFY(p_request->bRequest == AUDIO_CS_REQ_CUR);
  8000452:	68bb      	ldr	r3, [r7, #8]
  8000454:	785b      	ldrb	r3, [r3, #1]
  8000456:	2b01      	cmp	r3, #1
@@ -552,8 +552,8 @@ bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  800045a:	2300      	movs	r3, #0
  800045c:	e01d      	b.n	800049a <tud_audio_set_req_ep_cb+0x5a>
 
-  // Page 91 in UAC2 specification
-  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
+  // We do not support any set range requests here, only current value requests
+  TU_VERIFY(p_request->bRequest == AUDIO_CS_REQ_CUR);
  800045e:	68bb      	ldr	r3, [r7, #8]
  8000460:	789a      	ldrb	r2, [r3, #2]
  8000462:	78db      	ldrb	r3, [r3, #3]
@@ -563,7 +563,7 @@ bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  800046a:	2317      	movs	r3, #23
  800046c:	18fb      	adds	r3, r7, r3
  800046e:	701a      	strb	r2, [r3, #0]
-  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+
  8000470:	68bb      	ldr	r3, [r7, #8]
  8000472:	789a      	ldrb	r2, [r3, #2]
  8000474:	78db      	ldrb	r3, [r3, #3]
@@ -575,7 +575,7 @@ bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  8000480:	2316      	movs	r3, #22
  8000482:	18fb      	adds	r3, r7, r3
  8000484:	701a      	strb	r2, [r3, #0]
-  uint8_t ep = TU_U16_LOW(p_request->wIndex);
+  // Page 91 in UAC2 specification
  8000486:	68bb      	ldr	r3, [r7, #8]
  8000488:	791a      	ldrb	r2, [r3, #4]
  800048a:	795b      	ldrb	r3, [r3, #5]
@@ -585,12 +585,12 @@ bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  8000492:	2315      	movs	r3, #21
  8000494:	18fb      	adds	r3, r7, r3
  8000496:	701a      	strb	r2, [r3, #0]
+  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
+  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+  uint8_t ep = TU_U16_LOW(p_request->wIndex);
 
-  (void) channelNum; (void) ctrlSel; (void) ep;
-
-  return false; 	// Yet not implemented
  8000498:	2300      	movs	r3, #0
-}
+  (void) channelNum; (void) ctrlSel; (void) ep;
  800049a:	0018      	movs	r0, r3
  800049c:	46bd      	mov	sp, r7
  800049e:	b006      	add	sp, #24
@@ -598,9 +598,9 @@ bool tud_audio_set_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
 
 080004a2 <tud_audio_set_req_itf_cb>:
 
-// Invoked when audio class specific set request received for an interface
-bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_request, uint8_t *pBuff)
-{
+  return false; 	// Yet not implemented
+}
+
  80004a2:	b580      	push	{r7, lr}
  80004a4:	b086      	sub	sp, #24
  80004a6:	af00      	add	r7, sp, #0
@@ -610,11 +610,11 @@ bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  80004ae:	18fb      	adds	r3, r7, r3
  80004b0:	1c02      	adds	r2, r0, #0
  80004b2:	701a      	strb	r2, [r3, #0]
+// Invoked when audio class specific set request received for an interface
+bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_request, uint8_t *pBuff)
+{
   (void) rhport;
   (void) pBuff;
-
-  // We do not support any set range requests here, only current value requests
-  TU_VERIFY(p_request->bRequest == AUDIO_CS_REQ_CUR);
  80004b4:	68bb      	ldr	r3, [r7, #8]
  80004b6:	785b      	ldrb	r3, [r3, #1]
  80004b8:	2b01      	cmp	r3, #1
@@ -622,8 +622,8 @@ bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  80004bc:	2300      	movs	r3, #0
  80004be:	e01d      	b.n	80004fc <tud_audio_set_req_itf_cb+0x5a>
 
-  // Page 91 in UAC2 specification
-  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
+  // We do not support any set range requests here, only current value requests
+  TU_VERIFY(p_request->bRequest == AUDIO_CS_REQ_CUR);
  80004c0:	68bb      	ldr	r3, [r7, #8]
  80004c2:	789a      	ldrb	r2, [r3, #2]
  80004c4:	78db      	ldrb	r3, [r3, #3]
@@ -633,7 +633,7 @@ bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  80004cc:	2317      	movs	r3, #23
  80004ce:	18fb      	adds	r3, r7, r3
  80004d0:	701a      	strb	r2, [r3, #0]
-  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+
  80004d2:	68bb      	ldr	r3, [r7, #8]
  80004d4:	789a      	ldrb	r2, [r3, #2]
  80004d6:	78db      	ldrb	r3, [r3, #3]
@@ -645,7 +645,7 @@ bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  80004e2:	2316      	movs	r3, #22
  80004e4:	18fb      	adds	r3, r7, r3
  80004e6:	701a      	strb	r2, [r3, #0]
-  uint8_t itf = TU_U16_LOW(p_request->wIndex);
+  // Page 91 in UAC2 specification
  80004e8:	68bb      	ldr	r3, [r7, #8]
  80004ea:	791a      	ldrb	r2, [r3, #4]
  80004ec:	795b      	ldrb	r3, [r3, #5]
@@ -655,12 +655,12 @@ bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  80004f4:	2315      	movs	r3, #21
  80004f6:	18fb      	adds	r3, r7, r3
  80004f8:	701a      	strb	r2, [r3, #0]
+  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
+  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+  uint8_t itf = TU_U16_LOW(p_request->wIndex);
 
-  (void) channelNum; (void) ctrlSel; (void) itf;
-
-  return false; 	// Yet not implemented
  80004fa:	2300      	movs	r3, #0
-}
+  (void) channelNum; (void) ctrlSel; (void) itf;
  80004fc:	0018      	movs	r0, r3
  80004fe:	46bd      	mov	sp, r7
  8000500:	b006      	add	sp, #24
@@ -668,9 +668,9 @@ bool tud_audio_set_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
 
 08000504 <tud_audio_set_req_entity_cb>:
 
-// Invoked when audio class specific set request received for an entity
-bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * p_request, uint8_t *pBuff)
-{
+  return false; 	// Yet not implemented
+}
+
  8000504:	b580      	push	{r7, lr}
  8000506:	b086      	sub	sp, #24
  8000508:	af00      	add	r7, sp, #0
@@ -680,10 +680,10 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000510:	18fb      	adds	r3, r7, r3
  8000512:	1c02      	adds	r2, r0, #0
  8000514:	701a      	strb	r2, [r3, #0]
+// Invoked when audio class specific set request received for an entity
+bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * p_request, uint8_t *pBuff)
+{
   (void) rhport;
-
-  // Page 91 in UAC2 specification
-  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
  8000516:	68bb      	ldr	r3, [r7, #8]
  8000518:	789a      	ldrb	r2, [r3, #2]
  800051a:	78db      	ldrb	r3, [r3, #3]
@@ -693,7 +693,7 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000522:	2317      	movs	r3, #23
  8000524:	18fb      	adds	r3, r7, r3
  8000526:	701a      	strb	r2, [r3, #0]
-  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+
  8000528:	68bb      	ldr	r3, [r7, #8]
  800052a:	789a      	ldrb	r2, [r3, #2]
  800052c:	78db      	ldrb	r3, [r3, #3]
@@ -705,7 +705,7 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000538:	2316      	movs	r3, #22
  800053a:	18fb      	adds	r3, r7, r3
  800053c:	701a      	strb	r2, [r3, #0]
-  uint8_t itf = TU_U16_LOW(p_request->wIndex);
+  // Page 91 in UAC2 specification
  800053e:	68bb      	ldr	r3, [r7, #8]
  8000540:	791a      	ldrb	r2, [r3, #4]
  8000542:	795b      	ldrb	r3, [r3, #5]
@@ -715,7 +715,7 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  800054a:	2315      	movs	r3, #21
  800054c:	18fb      	adds	r3, r7, r3
  800054e:	701a      	strb	r2, [r3, #0]
-  uint8_t entityID = TU_U16_HIGH(p_request->wIndex);
+  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
  8000550:	68bb      	ldr	r3, [r7, #8]
  8000552:	791a      	ldrb	r2, [r3, #4]
  8000554:	795b      	ldrb	r3, [r3, #5]
@@ -727,11 +727,11 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000560:	2314      	movs	r3, #20
  8000562:	18fb      	adds	r3, r7, r3
  8000564:	701a      	strb	r2, [r3, #0]
+  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+  uint8_t itf = TU_U16_LOW(p_request->wIndex);
+  uint8_t entityID = TU_U16_HIGH(p_request->wIndex);
 
   (void) itf;
-
-  // We do not support any set range requests here, only current value requests
-  TU_VERIFY(p_request->bRequest == AUDIO_CS_REQ_CUR);
  8000566:	68bb      	ldr	r3, [r7, #8]
  8000568:	785b      	ldrb	r3, [r3, #1]
  800056a:	2b01      	cmp	r3, #1
@@ -739,15 +739,15 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  800056e:	2300      	movs	r3, #0
  8000570:	e041      	b.n	80005f6 <tud_audio_set_req_entity_cb+0xf2>
 
-  // If request is for our feature unit
-  if ( entityID == 2 )
+  // We do not support any set range requests here, only current value requests
+  TU_VERIFY(p_request->bRequest == AUDIO_CS_REQ_CUR);
  8000572:	2314      	movs	r3, #20
  8000574:	18fb      	adds	r3, r7, r3
  8000576:	781b      	ldrb	r3, [r3, #0]
  8000578:	2b02      	cmp	r3, #2
  800057a:	d13b      	bne.n	80005f4 <tud_audio_set_req_entity_cb+0xf0>
-  {
-    switch ( ctrlSel )
+
+  // If request is for our feature unit
  800057c:	2316      	movs	r3, #22
  800057e:	18fb      	adds	r3, r7, r3
  8000580:	781b      	ldrb	r3, [r3, #0]
@@ -756,10 +756,10 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000586:	2b02      	cmp	r3, #2
  8000588:	d017      	beq.n	80005ba <tud_audio_set_req_entity_cb+0xb6>
  800058a:	e031      	b.n	80005f0 <tud_audio_set_req_entity_cb+0xec>
+  if ( entityID == 2 )
+  {
+    switch ( ctrlSel )
     {
-      case AUDIO_FU_CTRL_MUTE:
-        // Request uses format layout 1
-        TU_VERIFY(p_request->wLength == sizeof(audio_control_cur_1_t));
  800058c:	68bb      	ldr	r3, [r7, #8]
  800058e:	799a      	ldrb	r2, [r3, #6]
  8000590:	79db      	ldrb	r3, [r3, #7]
@@ -770,8 +770,8 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  800059a:	d001      	beq.n	80005a0 <tud_audio_set_req_entity_cb+0x9c>
  800059c:	2300      	movs	r3, #0
  800059e:	e02a      	b.n	80005f6 <tud_audio_set_req_entity_cb+0xf2>
-
-        mute[channelNum] = ((audio_control_cur_1_t*) pBuff)->bCur;
+      case AUDIO_FU_CTRL_MUTE:
+        // Request uses format layout 1
  80005a0:	687b      	ldr	r3, [r7, #4]
  80005a2:	2200      	movs	r2, #0
  80005a4:	569a      	ldrsb	r2, [r3, r2]
@@ -783,15 +783,15 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80005b0:	b2d1      	uxtb	r1, r2
  80005b2:	4a13      	ldr	r2, [pc, #76]	; (8000600 <tud_audio_set_req_entity_cb+0xfc>)
  80005b4:	54d1      	strb	r1, [r2, r3]
+        TU_VERIFY(p_request->wLength == sizeof(audio_control_cur_1_t));
 
-        TU_LOG2("    Set Mute: %d of channel: %u\r\n", mute[channelNum], channelNum);
-      return true;
+        mute[channelNum] = ((audio_control_cur_1_t*) pBuff)->bCur;
  80005b6:	2301      	movs	r3, #1
  80005b8:	e01d      	b.n	80005f6 <tud_audio_set_req_entity_cb+0xf2>
 
-      case AUDIO_FU_CTRL_VOLUME:
-        // Request uses format layout 2
-        TU_VERIFY(p_request->wLength == sizeof(audio_control_cur_2_t));
+        TU_LOG2("    Set Mute: %d of channel: %u\r\n", mute[channelNum], channelNum);
+      return true;
+
  80005ba:	68bb      	ldr	r3, [r7, #8]
  80005bc:	799a      	ldrb	r2, [r3, #6]
  80005be:	79db      	ldrb	r3, [r3, #7]
@@ -802,8 +802,8 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80005c8:	d001      	beq.n	80005ce <tud_audio_set_req_entity_cb+0xca>
  80005ca:	2300      	movs	r3, #0
  80005cc:	e013      	b.n	80005f6 <tud_audio_set_req_entity_cb+0xf2>
-
-        volume[channelNum] = ((audio_control_cur_2_t*) pBuff)->bCur;
+      case AUDIO_FU_CTRL_VOLUME:
+        // Request uses format layout 2
  80005ce:	687b      	ldr	r3, [r7, #4]
  80005d0:	781a      	ldrb	r2, [r3, #0]
  80005d2:	785b      	ldrb	r3, [r3, #1]
@@ -819,36 +819,36 @@ bool tud_audio_set_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80005e6:	4b07      	ldr	r3, [pc, #28]	; (8000604 <tud_audio_set_req_entity_cb+0x100>)
  80005e8:	0052      	lsls	r2, r2, #1
  80005ea:	52d1      	strh	r1, [r2, r3]
+        TU_VERIFY(p_request->wLength == sizeof(audio_control_cur_2_t));
 
-        TU_LOG2("    Set Volume: %d dB of channel: %u\r\n", volume[channelNum], channelNum);
-      return true;
+        volume[channelNum] = ((audio_control_cur_2_t*) pBuff)->bCur;
  80005ec:	2301      	movs	r3, #1
  80005ee:	e002      	b.n	80005f6 <tud_audio_set_req_entity_cb+0xf2>
 
+        TU_LOG2("    Set Volume: %d dB of channel: %u\r\n", volume[channelNum], channelNum);
+      return true;
+
         // Unknown/Unsupported control
+ 80005f0:	2300      	movs	r3, #0
+ 80005f2:	e000      	b.n	80005f6 <tud_audio_set_req_entity_cb+0xf2>
       default:
         TU_BREAKPOINT();
       return false;
- 80005f0:	2300      	movs	r3, #0
- 80005f2:	e000      	b.n	80005f6 <tud_audio_set_req_entity_cb+0xf2>
-    }
-  }
-  return false;    // Yet not implemented
  80005f4:	2300      	movs	r3, #0
-}
+    }
  80005f6:	0018      	movs	r0, r3
  80005f8:	46bd      	mov	sp, r7
  80005fa:	b006      	add	sp, #24
  80005fc:	bd80      	pop	{r7, pc}
  80005fe:	46c0      	nop			; (mov r8, r8)
  8000600:	20000348 	.word	0x20000348
- 8000604:	20000350 	.word	0x20000350
+ 8000604:	2000034c 	.word	0x2000034c
 
 08000608 <tud_audio_get_req_ep_cb>:
+  }
+  return false;    // Yet not implemented
+}
 
-// Invoked when audio class specific get request received for an EP
-bool tud_audio_get_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_request)
-{
  8000608:	b580      	push	{r7, lr}
  800060a:	b084      	sub	sp, #16
  800060c:	af00      	add	r7, sp, #0
@@ -856,10 +856,10 @@ bool tud_audio_get_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  8000610:	6039      	str	r1, [r7, #0]
  8000612:	1dfb      	adds	r3, r7, #7
  8000614:	701a      	strb	r2, [r3, #0]
+// Invoked when audio class specific get request received for an EP
+bool tud_audio_get_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_request)
+{
   (void) rhport;
-
-  // Page 91 in UAC2 specification
-  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
  8000616:	683b      	ldr	r3, [r7, #0]
  8000618:	789a      	ldrb	r2, [r3, #2]
  800061a:	78db      	ldrb	r3, [r3, #3]
@@ -869,7 +869,7 @@ bool tud_audio_get_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  8000622:	230f      	movs	r3, #15
  8000624:	18fb      	adds	r3, r7, r3
  8000626:	701a      	strb	r2, [r3, #0]
-  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+
  8000628:	683b      	ldr	r3, [r7, #0]
  800062a:	789a      	ldrb	r2, [r3, #2]
  800062c:	78db      	ldrb	r3, [r3, #3]
@@ -881,7 +881,7 @@ bool tud_audio_get_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  8000638:	230e      	movs	r3, #14
  800063a:	18fb      	adds	r3, r7, r3
  800063c:	701a      	strb	r2, [r3, #0]
-  uint8_t ep = TU_U16_LOW(p_request->wIndex);
+  // Page 91 in UAC2 specification
  800063e:	683b      	ldr	r3, [r7, #0]
  8000640:	791a      	ldrb	r2, [r3, #4]
  8000642:	795b      	ldrb	r3, [r3, #5]
@@ -891,14 +891,14 @@ bool tud_audio_get_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
  800064a:	230d      	movs	r3, #13
  800064c:	18fb      	adds	r3, r7, r3
  800064e:	701a      	strb	r2, [r3, #0]
+  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
+  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+  uint8_t ep = TU_U16_LOW(p_request->wIndex);
 
   (void) channelNum; (void) ctrlSel; (void) ep;
 
-  //	return tud_control_xfer(rhport, p_request, &tmp, 1);
-
-  return false; 	// Yet not implemented
  8000650:	2300      	movs	r3, #0
-}
+  //	return tud_control_xfer(rhport, p_request, &tmp, 1);
  8000652:	0018      	movs	r0, r3
  8000654:	46bd      	mov	sp, r7
  8000656:	b004      	add	sp, #16
@@ -906,9 +906,9 @@ bool tud_audio_get_req_ep_cb(uint8_t rhport, tusb_control_request_t const * p_re
 
 0800065a <tud_audio_get_req_itf_cb>:
 
-// Invoked when audio class specific get request received for an interface
-bool tud_audio_get_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_request)
-{
+  return false; 	// Yet not implemented
+}
+
  800065a:	b580      	push	{r7, lr}
  800065c:	b084      	sub	sp, #16
  800065e:	af00      	add	r7, sp, #0
@@ -916,10 +916,10 @@ bool tud_audio_get_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  8000662:	6039      	str	r1, [r7, #0]
  8000664:	1dfb      	adds	r3, r7, #7
  8000666:	701a      	strb	r2, [r3, #0]
+// Invoked when audio class specific get request received for an interface
+bool tud_audio_get_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_request)
+{
   (void) rhport;
-
-  // Page 91 in UAC2 specification
-  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
  8000668:	683b      	ldr	r3, [r7, #0]
  800066a:	789a      	ldrb	r2, [r3, #2]
  800066c:	78db      	ldrb	r3, [r3, #3]
@@ -929,7 +929,7 @@ bool tud_audio_get_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  8000674:	230f      	movs	r3, #15
  8000676:	18fb      	adds	r3, r7, r3
  8000678:	701a      	strb	r2, [r3, #0]
-  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+
  800067a:	683b      	ldr	r3, [r7, #0]
  800067c:	789a      	ldrb	r2, [r3, #2]
  800067e:	78db      	ldrb	r3, [r3, #3]
@@ -941,7 +941,7 @@ bool tud_audio_get_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  800068a:	230e      	movs	r3, #14
  800068c:	18fb      	adds	r3, r7, r3
  800068e:	701a      	strb	r2, [r3, #0]
-  uint8_t itf = TU_U16_LOW(p_request->wIndex);
+  // Page 91 in UAC2 specification
  8000690:	683b      	ldr	r3, [r7, #0]
  8000692:	791a      	ldrb	r2, [r3, #4]
  8000694:	795b      	ldrb	r3, [r3, #5]
@@ -951,12 +951,12 @@ bool tud_audio_get_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
  800069c:	230d      	movs	r3, #13
  800069e:	18fb      	adds	r3, r7, r3
  80006a0:	701a      	strb	r2, [r3, #0]
+  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
+  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+  uint8_t itf = TU_U16_LOW(p_request->wIndex);
 
-  (void) channelNum; (void) ctrlSel; (void) itf;
-
-  return false; 	// Yet not implemented
  80006a2:	2300      	movs	r3, #0
-}
+  (void) channelNum; (void) ctrlSel; (void) itf;
  80006a4:	0018      	movs	r0, r3
  80006a6:	46bd      	mov	sp, r7
  80006a8:	b004      	add	sp, #16
@@ -964,9 +964,9 @@ bool tud_audio_get_req_itf_cb(uint8_t rhport, tusb_control_request_t const * p_r
 
 080006ac <tud_audio_get_req_entity_cb>:
 
-// Invoked when audio class specific get request received for an entity
-bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * p_request)
-{
+  return false; 	// Yet not implemented
+}
+
  80006ac:	b580      	push	{r7, lr}
  80006ae:	b088      	sub	sp, #32
  80006b0:	af00      	add	r7, sp, #0
@@ -974,10 +974,10 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80006b4:	6039      	str	r1, [r7, #0]
  80006b6:	1dfb      	adds	r3, r7, #7
  80006b8:	701a      	strb	r2, [r3, #0]
+// Invoked when audio class specific get request received for an entity
+bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * p_request)
+{
   (void) rhport;
-
-  // Page 91 in UAC2 specification
-  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
  80006ba:	683b      	ldr	r3, [r7, #0]
  80006bc:	789a      	ldrb	r2, [r3, #2]
  80006be:	78db      	ldrb	r3, [r3, #3]
@@ -987,7 +987,7 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80006c6:	231f      	movs	r3, #31
  80006c8:	18fb      	adds	r3, r7, r3
  80006ca:	701a      	strb	r2, [r3, #0]
-  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+
  80006cc:	683b      	ldr	r3, [r7, #0]
  80006ce:	789a      	ldrb	r2, [r3, #2]
  80006d0:	78db      	ldrb	r3, [r3, #3]
@@ -999,8 +999,8 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80006dc:	211e      	movs	r1, #30
  80006de:	187b      	adds	r3, r7, r1
  80006e0:	701a      	strb	r2, [r3, #0]
-  // uint8_t itf = TU_U16_LOW(p_request->wIndex); 			// Since we have only one audio function implemented, we do not need the itf value
-  uint8_t entityID = TU_U16_HIGH(p_request->wIndex);
+  // Page 91 in UAC2 specification
+  uint8_t channelNum = TU_U16_LOW(p_request->wValue);
  80006e2:	683b      	ldr	r3, [r7, #0]
  80006e4:	791a      	ldrb	r2, [r3, #4]
  80006e6:	795b      	ldrb	r3, [r3, #5]
@@ -1012,30 +1012,30 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80006f2:	201d      	movs	r0, #29
  80006f4:	183b      	adds	r3, r7, r0
  80006f6:	701a      	strb	r2, [r3, #0]
-
-  // Input terminal (Microphone input)
-  if (entityID == 1)
+  uint8_t ctrlSel = TU_U16_HIGH(p_request->wValue);
+  // uint8_t itf = TU_U16_LOW(p_request->wIndex); 			// Since we have only one audio function implemented, we do not need the itf value
+  uint8_t entityID = TU_U16_HIGH(p_request->wIndex);
  80006f8:	183b      	adds	r3, r7, r0
  80006fa:	781b      	ldrb	r3, [r3, #0]
  80006fc:	2b01      	cmp	r3, #1
  80006fe:	d127      	bne.n	8000750 <tud_audio_get_req_entity_cb+0xa4>
-  {
-    switch ( ctrlSel )
+
+  // Input terminal (Microphone input)
  8000700:	187b      	adds	r3, r7, r1
  8000702:	781b      	ldrb	r3, [r3, #0]
  8000704:	2b02      	cmp	r3, #2
  8000706:	d121      	bne.n	800074c <tud_audio_get_req_entity_cb+0xa0>
+    switch ( ctrlSel )
+    {
+      case AUDIO_TE_CTRL_CONNECTOR:
       {
         // The terminal connector control only has a get request with only the CUR attribute.
         audio_desc_channel_cluster_t ret;
-
-        // Those are dummy values for now
-        ret.bNrChannels = 1;
  8000708:	2014      	movs	r0, #20
  800070a:	183b      	adds	r3, r7, r0
  800070c:	2201      	movs	r2, #1
  800070e:	701a      	strb	r2, [r3, #0]
-        ret.bmChannelConfig = 0;
+
  8000710:	183b      	adds	r3, r7, r0
  8000712:	3301      	adds	r3, #1
  8000714:	781a      	ldrb	r2, [r3, #0]
@@ -1054,14 +1054,14 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  800072e:	2100      	movs	r1, #0
  8000730:	400a      	ands	r2, r1
  8000732:	70da      	strb	r2, [r3, #3]
-        ret.iChannelNames = 0;
+        // Those are dummy values for now
  8000734:	183b      	adds	r3, r7, r0
  8000736:	2200      	movs	r2, #0
  8000738:	715a      	strb	r2, [r3, #5]
+        ret.bNrChannels = 1;
+        ret.bmChannelConfig = 0;
+        ret.iChannelNames = 0;
 
-        TU_LOG2("    Get terminal connector\r\n");
-
-        return tud_audio_buffer_and_schedule_control_xfer(rhport, p_request, (void*) &ret, sizeof(ret));
  800073a:	183a      	adds	r2, r7, r0
  800073c:	6839      	ldr	r1, [r7, #0]
  800073e:	1dfb      	adds	r3, r7, #7
@@ -1070,26 +1070,26 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000744:	f002 fc8e 	bl	8003064 <tud_audio_buffer_and_schedule_control_xfer>
  8000748:	0003      	movs	r3, r0
  800074a:	e07f      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
+
+        return tud_audio_buffer_and_schedule_control_xfer(rhport, p_request, (void*) &ret, sizeof(ret));
+      }
       break;
 
         // Unknown/Unsupported control selector
+ 800074c:	2300      	movs	r3, #0
+ 800074e:	e07d      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
       default:
         TU_BREAKPOINT();
         return false;
- 800074c:	2300      	movs	r3, #0
- 800074e:	e07d      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
     }
   }
-
-  // Feature unit
-  if (entityID == 2)
  8000750:	231d      	movs	r3, #29
  8000752:	18fb      	adds	r3, r7, r3
  8000754:	781b      	ldrb	r3, [r3, #0]
  8000756:	2b02      	cmp	r3, #2
  8000758:	d144      	bne.n	80007e4 <tud_audio_get_req_entity_cb+0x138>
-  {
-    switch ( ctrlSel )
+
+  // Feature unit
  800075a:	231e      	movs	r3, #30
  800075c:	18fb      	adds	r3, r7, r3
  800075e:	781b      	ldrb	r3, [r3, #0]
@@ -1098,12 +1098,12 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000764:	2b02      	cmp	r3, #2
  8000766:	d00d      	beq.n	8000784 <tud_audio_get_req_entity_cb+0xd8>
  8000768:	e03a      	b.n	80007e0 <tud_audio_get_req_entity_cb+0x134>
+  if (entityID == 2)
+  {
+    switch ( ctrlSel )
     {
       case AUDIO_FU_CTRL_MUTE:
         // Audio control mute cur parameter block consists of only one byte - we thus can send it right away
-        // There does not exist a range parameter block for mute
-        TU_LOG2("    Get Mute of channel: %u\r\n", channelNum);
-        return tud_control_xfer(rhport, p_request, &mute[channelNum], 1);
  800076a:	231f      	movs	r3, #31
  800076c:	18fb      	adds	r3, r7, r3
  800076e:	781a      	ldrb	r2, [r3, #0]
@@ -1116,9 +1116,9 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  800077c:	f005 f8b6 	bl	80058ec <tud_control_xfer>
  8000780:	0003      	movs	r3, r0
  8000782:	e063      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
-
-      case AUDIO_FU_CTRL_VOLUME:
-        switch ( p_request->bRequest )
+        // There does not exist a range parameter block for mute
+        TU_LOG2("    Get Mute of channel: %u\r\n", channelNum);
+        return tud_control_xfer(rhport, p_request, &mute[channelNum], 1);
  8000784:	683b      	ldr	r3, [r7, #0]
  8000786:	785b      	ldrb	r3, [r3, #1]
  8000788:	2b01      	cmp	r3, #1
@@ -1126,10 +1126,10 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  800078c:	2b02      	cmp	r3, #2
  800078e:	d00e      	beq.n	80007ae <tud_audio_get_req_entity_cb+0x102>
  8000790:	e024      	b.n	80007dc <tud_audio_get_req_entity_cb+0x130>
+
+      case AUDIO_FU_CTRL_VOLUME:
+        switch ( p_request->bRequest )
         {
-          case AUDIO_CS_REQ_CUR:
-            TU_LOG2("    Get Volume of channel: %u\r\n", channelNum);
-            return tud_control_xfer(rhport, p_request, &volume[channelNum], sizeof(volume[channelNum]));
  8000792:	231f      	movs	r3, #31
  8000794:	18fb      	adds	r3, r7, r3
  8000796:	781b      	ldrb	r3, [r3, #0]
@@ -1144,30 +1144,30 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80007aa:	0003      	movs	r3, r0
  80007ac:	e04e      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
 
+          case AUDIO_CS_REQ_RANGE:
+            TU_LOG2("    Get Volume range of channel: %u\r\n", channelNum);
+
             // Copy values - only for testing - better is version below
             audio_control_range_2_n_t(1)
-            ret;
-
-            ret.wNumSubRanges = 1;
  80007ae:	210c      	movs	r1, #12
  80007b0:	187b      	adds	r3, r7, r1
  80007b2:	2201      	movs	r2, #1
  80007b4:	801a      	strh	r2, [r3, #0]
-            ret.subrange[0].bMin = -90;           // -90 dB
+            ret;
  80007b6:	187b      	adds	r3, r7, r1
  80007b8:	225a      	movs	r2, #90	; 0x5a
  80007ba:	4252      	negs	r2, r2
  80007bc:	805a      	strh	r2, [r3, #2]
-            ret.subrange[0].bMax = 90;		// +90 dB
+
  80007be:	187b      	adds	r3, r7, r1
  80007c0:	225a      	movs	r2, #90	; 0x5a
  80007c2:	809a      	strh	r2, [r3, #4]
-            ret.subrange[0].bRes = 1; 		// 1 dB steps
+            ret.wNumSubRanges = 1;
  80007c4:	187b      	adds	r3, r7, r1
  80007c6:	2201      	movs	r2, #1
  80007c8:	80da      	strh	r2, [r3, #6]
-
-            return tud_audio_buffer_and_schedule_control_xfer(rhport, p_request, (void*) &ret, sizeof(ret));
+            ret.subrange[0].bMin = -90;           // -90 dB
+            ret.subrange[0].bMax = 90;		// +90 dB
  80007ca:	187a      	adds	r2, r7, r1
  80007cc:	6839      	ldr	r1, [r7, #0]
  80007ce:	1dfb      	adds	r3, r7, #7
@@ -1176,33 +1176,33 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80007d4:	f002 fc46 	bl	8003064 <tud_audio_buffer_and_schedule_control_xfer>
  80007d8:	0003      	movs	r3, r0
  80007da:	e037      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
+            ret.subrange[0].bRes = 1; 		// 1 dB steps
+
+            return tud_audio_buffer_and_schedule_control_xfer(rhport, p_request, (void*) &ret, sizeof(ret));
 
             // Unknown/Unsupported control
-          default:
-            TU_BREAKPOINT();
-            return false;
  80007dc:	2300      	movs	r3, #0
  80007de:	e035      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
+            TU_BREAKPOINT();
+            return false;
+        }
       break;
 
         // Unknown/Unsupported control
+ 80007e0:	2300      	movs	r3, #0
+ 80007e2:	e033      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
       default:
         TU_BREAKPOINT();
         return false;
- 80007e0:	2300      	movs	r3, #0
- 80007e2:	e033      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
     }
   }
-
-  // Clock Source unit
-  if ( entityID == 4 )
  80007e4:	231d      	movs	r3, #29
  80007e6:	18fb      	adds	r3, r7, r3
  80007e8:	781b      	ldrb	r3, [r3, #0]
  80007ea:	2b04      	cmp	r3, #4
  80007ec:	d12d      	bne.n	800084a <tud_audio_get_req_entity_cb+0x19e>
-  {
-    switch ( ctrlSel )
+
+  // Clock Source unit
  80007ee:	231e      	movs	r3, #30
  80007f0:	18fb      	adds	r3, r7, r3
  80007f2:	781b      	ldrb	r3, [r3, #0]
@@ -1211,10 +1211,10 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  80007f8:	2b02      	cmp	r3, #2
  80007fa:	d01b      	beq.n	8000834 <tud_audio_get_req_entity_cb+0x188>
  80007fc:	e023      	b.n	8000846 <tud_audio_get_req_entity_cb+0x19a>
+  if ( entityID == 4 )
+  {
+    switch ( ctrlSel )
     {
-      case AUDIO_CS_CTRL_SAM_FREQ:
-        // channelNum is always zero in this case
-        switch ( p_request->bRequest )
  80007fe:	683b      	ldr	r3, [r7, #0]
  8000800:	785b      	ldrb	r3, [r3, #1]
  8000802:	2b01      	cmp	r3, #1
@@ -1222,10 +1222,10 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000806:	2b02      	cmp	r3, #2
  8000808:	d009      	beq.n	800081e <tud_audio_get_req_entity_cb+0x172>
  800080a:	e011      	b.n	8000830 <tud_audio_get_req_entity_cb+0x184>
+      case AUDIO_CS_CTRL_SAM_FREQ:
+        // channelNum is always zero in this case
+        switch ( p_request->bRequest )
         {
-          case AUDIO_CS_REQ_CUR:
-            TU_LOG2("    Get Sample Freq.\r\n");
-            return tud_control_xfer(rhport, p_request, &sampFreq, sizeof(sampFreq));
  800080c:	4a13      	ldr	r2, [pc, #76]	; (800085c <tud_audio_get_req_entity_cb+0x1b0>)
  800080e:	6839      	ldr	r1, [r7, #0]
  8000810:	1dfb      	adds	r3, r7, #7
@@ -1234,10 +1234,10 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000816:	f005 f869 	bl	80058ec <tud_control_xfer>
  800081a:	0003      	movs	r3, r0
  800081c:	e016      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
+          case AUDIO_CS_REQ_CUR:
+            TU_LOG2("    Get Sample Freq.\r\n");
+            return tud_control_xfer(rhport, p_request, &sampFreq, sizeof(sampFreq));
 
-          case AUDIO_CS_REQ_RANGE:
-            TU_LOG2("    Get Sample Freq. range\r\n");
-            return tud_control_xfer(rhport, p_request, &sampleFreqRng, sizeof(sampleFreqRng));
  800081e:	4a10      	ldr	r2, [pc, #64]	; (8000860 <tud_audio_get_req_entity_cb+0x1b4>)
  8000820:	6839      	ldr	r1, [r7, #0]
  8000822:	1dfb      	adds	r3, r7, #7
@@ -1246,19 +1246,19 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  8000828:	f005 f860 	bl	80058ec <tud_control_xfer>
  800082c:	0003      	movs	r3, r0
  800082e:	e00d      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
+          case AUDIO_CS_REQ_RANGE:
+            TU_LOG2("    Get Sample Freq. range\r\n");
+            return tud_control_xfer(rhport, p_request, &sampleFreqRng, sizeof(sampleFreqRng));
 
            // Unknown/Unsupported control
-          default:
-            TU_BREAKPOINT();
-            return false;
  8000830:	2300      	movs	r3, #0
  8000832:	e00b      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
+            TU_BREAKPOINT();
+            return false;
+        }
       break;
 
       case AUDIO_CS_CTRL_CLK_VALID:
-        // Only cur attribute exists for this request
-        TU_LOG2("    Get Sample Freq. valid\r\n");
-        return tud_control_xfer(rhport, p_request, &clkValid, sizeof(clkValid));
  8000834:	4a0b      	ldr	r2, [pc, #44]	; (8000864 <tud_audio_get_req_entity_cb+0x1b8>)
  8000836:	6839      	ldr	r1, [r7, #0]
  8000838:	1dfb      	adds	r3, r7, #7
@@ -1267,34 +1267,34 @@ bool tud_audio_get_req_entity_cb(uint8_t rhport, tusb_control_request_t const * 
  800083e:	f005 f855 	bl	80058ec <tud_control_xfer>
  8000842:	0003      	movs	r3, r0
  8000844:	e002      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
+        // Only cur attribute exists for this request
+        TU_LOG2("    Get Sample Freq. valid\r\n");
+        return tud_control_xfer(rhport, p_request, &clkValid, sizeof(clkValid));
 
       // Unknown/Unsupported control
+ 8000846:	2300      	movs	r3, #0
+ 8000848:	e000      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
       default:
         TU_BREAKPOINT();
         return false;
- 8000846:	2300      	movs	r3, #0
- 8000848:	e000      	b.n	800084c <tud_audio_get_req_entity_cb+0x1a0>
     }
   }
-
-  TU_LOG2("  Unsupported entity: %d\r\n", entityID);
-  return false; 	// Yet not implemented
  800084a:	2300      	movs	r3, #0
-}
+
  800084c:	0018      	movs	r0, r3
  800084e:	46bd      	mov	sp, r7
  8000850:	b008      	add	sp, #32
  8000852:	bd80      	pop	{r7, pc}
  8000854:	20000348 	.word	0x20000348
- 8000858:	20000350 	.word	0x20000350
- 800085c:	2000035c 	.word	0x2000035c
- 8000860:	20000364 	.word	0x20000364
- 8000864:	20000360 	.word	0x20000360
+ 8000858:	2000034c 	.word	0x2000034c
+ 800085c:	20000350 	.word	0x20000350
+ 8000860:	20000358 	.word	0x20000358
+ 8000864:	20000354 	.word	0x20000354
 
 08000868 <tud_audio_tx_done_pre_load_cb>:
-
-bool tud_audio_tx_done_pre_load_cb(uint8_t rhport, uint8_t itf, uint8_t ep_in, uint8_t cur_alt_setting)
-{
+  TU_LOG2("  Unsupported entity: %d\r\n", entityID);
+  return false; 	// Yet not implemented
+}
  8000868:	b5b0      	push	{r4, r5, r7, lr}
  800086a:	b084      	sub	sp, #16
  800086c:	af00      	add	r7, sp, #0
@@ -1314,33 +1314,33 @@ bool tud_audio_tx_done_pre_load_cb(uint8_t rhport, uint8_t itf, uint8_t ep_in, u
  8000888:	1d3b      	adds	r3, r7, #4
  800088a:	1c0a      	adds	r2, r1, #0
  800088c:	701a      	strb	r2, [r3, #0]
+
+bool tud_audio_tx_done_pre_load_cb(uint8_t rhport, uint8_t itf, uint8_t ep_in, uint8_t cur_alt_setting)
+{
   (void) rhport;
   (void) itf;
   (void) ep_in;
-  (void) cur_alt_setting;
-
-  for (uint8_t cnt=0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
  800088e:	230f      	movs	r3, #15
  8000890:	18fb      	adds	r3, r7, r3
  8000892:	2200      	movs	r2, #0
  8000894:	701a      	strb	r2, [r3, #0]
  8000896:	e013      	b.n	80008c0 <tud_audio_tx_done_pre_load_cb+0x58>
-  {
-    tud_audio_write_support_ff(cnt, i2s_dummy_buffer[cnt], AUDIO_SAMPLE_RATE/1000 * CFG_TUD_AUDIO_FUNC_1_N_BYTES_PER_SAMPLE_TX * CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX);
+  (void) cur_alt_setting;
+
  8000898:	200f      	movs	r0, #15
  800089a:	183b      	adds	r3, r7, r0
  800089c:	781b      	ldrb	r3, [r3, #0]
- 800089e:	22c4      	movs	r2, #196	; 0xc4
+ 800089e:	2262      	movs	r2, #98	; 0x62
  80008a0:	435a      	muls	r2, r3
  80008a2:	4b0c      	ldr	r3, [pc, #48]	; (80008d4 <tud_audio_tx_done_pre_load_cb+0x6c>)
  80008a4:	18d1      	adds	r1, r2, r3
  80008a6:	0004      	movs	r4, r0
  80008a8:	183b      	adds	r3, r7, r0
  80008aa:	781b      	ldrb	r3, [r3, #0]
- 80008ac:	22c0      	movs	r2, #192	; 0xc0
+ 80008ac:	2260      	movs	r2, #96	; 0x60
  80008ae:	0018      	movs	r0, r3
  80008b0:	f7ff fda8 	bl	8000404 <tud_audio_write_support_ff>
-  for (uint8_t cnt=0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
+  (void) ep_in;
  80008b4:	0020      	movs	r0, r4
  80008b6:	183b      	adds	r3, r7, r0
  80008b8:	781a      	ldrb	r2, [r3, #0]
@@ -1350,23 +1350,23 @@ bool tud_audio_tx_done_pre_load_cb(uint8_t rhport, uint8_t itf, uint8_t ep_in, u
  80008c0:	230f      	movs	r3, #15
  80008c2:	18fb      	adds	r3, r7, r3
  80008c4:	781b      	ldrb	r3, [r3, #0]
- 80008c6:	2b01      	cmp	r3, #1
- 80008c8:	d9e6      	bls.n	8000898 <tud_audio_tx_done_pre_load_cb+0x30>
-  }
-
-  return true;
+ 80008c6:	2b00      	cmp	r3, #0
+ 80008c8:	d0e6      	beq.n	8000898 <tud_audio_tx_done_pre_load_cb+0x30>
+  for (uint8_t cnt=0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
+  {
+    tud_audio_write_support_ff(cnt, i2s_dummy_buffer[cnt], AUDIO_SAMPLE_RATE/1000 * CFG_TUD_AUDIO_FUNC_1_N_BYTES_PER_SAMPLE_TX * CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX);
  80008ca:	2301      	movs	r3, #1
-}
+  }
  80008cc:	0018      	movs	r0, r3
  80008ce:	46bd      	mov	sp, r7
  80008d0:	b004      	add	sp, #16
  80008d2:	bdb0      	pop	{r4, r5, r7, pc}
- 80008d4:	20000374 	.word	0x20000374
+ 80008d4:	20000368 	.word	0x20000368
 
 080008d8 <tud_audio_tx_done_post_load_cb>:
 
-bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uint8_t itf, uint8_t ep_in, uint8_t cur_alt_setting)
-{
+  return true;
+}
  80008d8:	b5b0      	push	{r4, r5, r7, lr}
  80008da:	b086      	sub	sp, #24
  80008dc:	af00      	add	r7, sp, #0
@@ -1386,47 +1386,47 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
  80008f8:	1cfb      	adds	r3, r7, #3
  80008fa:	1c0a      	adds	r2, r1, #0
  80008fc:	701a      	strb	r2, [r3, #0]
+  (void) n_bytes_copied;
+  (void) itf;
+  (void) ep_in;
   (void) cur_alt_setting;
 
   uint16_t dataVal;
-
-  // Generate dummy data
-  for (uint16_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
  80008fe:	2314      	movs	r3, #20
  8000900:	18fb      	adds	r3, r7, r3
  8000902:	2200      	movs	r2, #0
  8000904:	801a      	strh	r2, [r3, #0]
  8000906:	e03e      	b.n	8000986 <tud_audio_tx_done_post_load_cb+0xae>
-  {
-    uint16_t * p_buff = i2s_dummy_buffer[cnt];              // 2 bytes per sample
+
+  // Generate dummy data
  8000908:	2314      	movs	r3, #20
  800090a:	18fb      	adds	r3, r7, r3
  800090c:	881b      	ldrh	r3, [r3, #0]
- 800090e:	22c4      	movs	r2, #196	; 0xc4
+ 800090e:	2262      	movs	r2, #98	; 0x62
  8000910:	435a      	muls	r2, r3
  8000912:	4b22      	ldr	r3, [pc, #136]	; (800099c <tud_audio_tx_done_post_load_cb+0xc4>)
  8000914:	18d3      	adds	r3, r2, r3
  8000916:	613b      	str	r3, [r7, #16]
-    dataVal = 1;
+  for (uint16_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
  8000918:	2316      	movs	r3, #22
  800091a:	18fb      	adds	r3, r7, r3
  800091c:	2201      	movs	r2, #1
  800091e:	801a      	strh	r2, [r3, #0]
-    for (uint16_t cnt2 = 0; cnt2 < AUDIO_SAMPLE_RATE/1000; cnt2++)
+  {
  8000920:	230e      	movs	r3, #14
  8000922:	18fb      	adds	r3, r7, r3
  8000924:	2200      	movs	r2, #0
  8000926:	801a      	strh	r2, [r3, #0]
  8000928:	e022      	b.n	8000970 <tud_audio_tx_done_post_load_cb+0x98>
-    {
-      for (uint8_t cnt3 = 0; cnt3 < CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX; cnt3++)
+    uint16_t * p_buff = i2s_dummy_buffer[cnt];              // 2 bytes per sample
+    dataVal = 1;
  800092a:	230d      	movs	r3, #13
  800092c:	18fb      	adds	r3, r7, r3
  800092e:	2200      	movs	r2, #0
  8000930:	701a      	strb	r2, [r3, #0]
  8000932:	e00c      	b.n	800094e <tud_audio_tx_done_post_load_cb+0x76>
-      {
-        *p_buff++ = dataVal;
+    for (uint16_t cnt2 = 0; cnt2 < AUDIO_SAMPLE_RATE/1000; cnt2++)
+    {
  8000934:	693b      	ldr	r3, [r7, #16]
  8000936:	1c9a      	adds	r2, r3, #2
  8000938:	613a      	str	r2, [r7, #16]
@@ -1434,7 +1434,7 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
  800093c:	18ba      	adds	r2, r7, r2
  800093e:	8812      	ldrh	r2, [r2, #0]
  8000940:	801a      	strh	r2, [r3, #0]
-      for (uint8_t cnt3 = 0; cnt3 < CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX; cnt3++)
+    dataVal = 1;
  8000942:	210d      	movs	r1, #13
  8000944:	187b      	adds	r3, r7, r1
  8000946:	781a      	ldrb	r2, [r3, #0]
@@ -1444,17 +1444,17 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
  800094e:	230d      	movs	r3, #13
  8000950:	18fb      	adds	r3, r7, r3
  8000952:	781b      	ldrb	r3, [r3, #0]
- 8000954:	2b01      	cmp	r3, #1
- 8000956:	d9ed      	bls.n	8000934 <tud_audio_tx_done_post_load_cb+0x5c>
-      }
-      dataVal++;
+ 8000954:	2b00      	cmp	r3, #0
+ 8000956:	d0ed      	beq.n	8000934 <tud_audio_tx_done_post_load_cb+0x5c>
+      for (uint8_t cnt3 = 0; cnt3 < CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX; cnt3++)
+      {
  8000958:	2116      	movs	r1, #22
  800095a:	187b      	adds	r3, r7, r1
  800095c:	881a      	ldrh	r2, [r3, #0]
  800095e:	187b      	adds	r3, r7, r1
  8000960:	3201      	adds	r2, #1
  8000962:	801a      	strh	r2, [r3, #0]
-    for (uint16_t cnt2 = 0; cnt2 < AUDIO_SAMPLE_RATE/1000; cnt2++)
+  {
  8000964:	210e      	movs	r1, #14
  8000966:	187b      	adds	r3, r7, r1
  8000968:	881a      	ldrh	r2, [r3, #0]
@@ -1466,7 +1466,7 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
  8000974:	881b      	ldrh	r3, [r3, #0]
  8000976:	2b2f      	cmp	r3, #47	; 0x2f
  8000978:	d9d7      	bls.n	800092a <tud_audio_tx_done_post_load_cb+0x52>
-  for (uint16_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
+  uint16_t dataVal;
  800097a:	2114      	movs	r1, #20
  800097c:	187b      	adds	r3, r7, r1
  800097e:	881a      	ldrh	r2, [r3, #0]
@@ -1476,24 +1476,24 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
  8000986:	2314      	movs	r3, #20
  8000988:	18fb      	adds	r3, r7, r3
  800098a:	881b      	ldrh	r3, [r3, #0]
- 800098c:	2b01      	cmp	r3, #1
- 800098e:	d9bb      	bls.n	8000908 <tud_audio_tx_done_post_load_cb+0x30>
-    }
-  }
-  return true;
+ 800098c:	2b00      	cmp	r3, #0
+ 800098e:	d0bb      	beq.n	8000908 <tud_audio_tx_done_post_load_cb+0x30>
+        *p_buff++ = dataVal;
+      }
+      dataVal++;
  8000990:	2301      	movs	r3, #1
-}
+    }
  8000992:	0018      	movs	r0, r3
  8000994:	46bd      	mov	sp, r7
  8000996:	b006      	add	sp, #24
  8000998:	bdb0      	pop	{r4, r5, r7, pc}
  800099a:	46c0      	nop			; (mov r8, r8)
- 800099c:	20000374 	.word	0x20000374
+ 800099c:	20000368 	.word	0x20000368
 
 080009a0 <tud_audio_set_itf_close_EP_cb>:
-
-bool tud_audio_set_itf_close_EP_cb(uint8_t rhport, tusb_control_request_t const * p_request)
-{
+  }
+  return true;
+}
  80009a0:	b580      	push	{r7, lr}
  80009a2:	b082      	sub	sp, #8
  80009a4:	af00      	add	r7, sp, #0
@@ -1501,70 +1501,70 @@ bool tud_audio_set_itf_close_EP_cb(uint8_t rhport, tusb_control_request_t const 
  80009a8:	6039      	str	r1, [r7, #0]
  80009aa:	1dfb      	adds	r3, r7, #7
  80009ac:	701a      	strb	r2, [r3, #0]
-  (void) rhport;
-  (void) p_request;
 
-  return true;
+bool tud_audio_set_itf_close_EP_cb(uint8_t rhport, tusb_control_request_t const * p_request)
+{
+  (void) rhport;
  80009ae:	2301      	movs	r3, #1
-}
+  (void) p_request;
  80009b0:	0018      	movs	r0, r3
  80009b2:	46bd      	mov	sp, r7
  80009b4:	b002      	add	sp, #8
  80009b6:	bd80      	pop	{r7, pc}
 
 080009b8 <main>:
+
+/* USER CODE END 0 */
+
 /**
   * @brief  The application entry point.
   * @retval int
-  */
-int main(void)
-{
  80009b8:	b580      	push	{r7, lr}
  80009ba:	af00      	add	r7, sp, #0
+{
+  /* USER CODE BEGIN 1 */
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
-
+ 80009bc:	f000 fa0a 	bl	8000dd4 <HAL_Init>
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
- 80009bc:	f000 fa0a 	bl	8000dd4 <HAL_Init>
+
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
-
+ 80009c0:	f000 f842 	bl	8000a48 <SystemClock_Config>
   /* Configure the system clock */
   SystemClock_Config();
- 80009c0:	f000 f842 	bl	8000a48 <SystemClock_Config>
+
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
+ 80009c4:	f000 f8ba 	bl	8000b3c <MX_GPIO_Init>
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
- 80009c4:	f000 f8ba 	bl	8000b3c <MX_GPIO_Init>
-  //MX_I2S1_Init();
-  MX_USB_PCD_Init();
  80009c8:	f000 f892 	bl	8000af0 <MX_USB_PCD_Init>
+  MX_GPIO_Init();
+  MX_I2S1_Init();
+  MX_USB_PCD_Init();
+ 80009cc:	f006 fb54 	bl	8007078 <tusb_init>
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  tusb_init();
- 80009cc:	f006 fb54 	bl	8007078 <tusb_init>
-
-  // Init values
-  sampFreq = AUDIO_SAMPLE_RATE;
  80009d0:	4b18      	ldr	r3, [pc, #96]	; (8000a34 <main+0x7c>)
  80009d2:	4a19      	ldr	r2, [pc, #100]	; (8000a38 <main+0x80>)
  80009d4:	601a      	str	r2, [r3, #0]
-  clkValid = 1;
+  tusb_init();
  80009d6:	4b19      	ldr	r3, [pc, #100]	; (8000a3c <main+0x84>)
  80009d8:	2201      	movs	r2, #1
  80009da:	701a      	strb	r2, [r3, #0]
-
-  sampleFreqRng.wNumSubRanges = 1;
+  char message[] = "Test123";
+  HAL_UART_Transmit(&huart2, (uint8_t*)message, sizeof(message), 100);
  80009dc:	4b18      	ldr	r3, [pc, #96]	; (8000a40 <main+0x88>)
  80009de:	2201      	movs	r2, #1
  80009e0:	801a      	strh	r2, [r3, #0]
-  sampleFreqRng.subrange[0].bMin = AUDIO_SAMPLE_RATE;
+
  80009e2:	4b17      	ldr	r3, [pc, #92]	; (8000a40 <main+0x88>)
  80009e4:	3302      	adds	r3, #2
  80009e6:	881a      	ldrh	r2, [r3, #0]
@@ -1578,7 +1578,7 @@ int main(void)
  80009f6:	2100      	movs	r1, #0
  80009f8:	400a      	ands	r2, r1
  80009fa:	805a      	strh	r2, [r3, #2]
-  sampleFreqRng.subrange[0].bMax = AUDIO_SAMPLE_RATE;
+  // Init values
  80009fc:	4b10      	ldr	r3, [pc, #64]	; (8000a40 <main+0x88>)
  80009fe:	3306      	adds	r3, #6
  8000a00:	881a      	ldrh	r2, [r3, #0]
@@ -1592,7 +1592,7 @@ int main(void)
  8000a10:	2100      	movs	r1, #0
  8000a12:	400a      	ands	r2, r1
  8000a14:	805a      	strh	r2, [r3, #2]
-  sampleFreqRng.subrange[0].bRes = 0;
+  sampFreq = AUDIO_SAMPLE_RATE;
  8000a16:	4b0a      	ldr	r3, [pc, #40]	; (8000a40 <main+0x88>)
  8000a18:	330a      	adds	r3, #10
  8000a1a:	881a      	ldrh	r2, [r3, #0]
@@ -1603,34 +1603,34 @@ int main(void)
  8000a24:	2100      	movs	r1, #0
  8000a26:	400a      	ands	r2, r1
  8000a28:	805a      	strh	r2, [r3, #2]
-  while (1)
-  {
-    /* USER CODE END WHILE */
+  sampleFreqRng.subrange[0].bMax = AUDIO_SAMPLE_RATE;
+  sampleFreqRng.subrange[0].bRes = 0;
+  /* USER CODE END 2 */
 
-    /* USER CODE BEGIN 3 */
-	tud_task();
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
  8000a2a:	f003 fd59 	bl	80044e0 <tud_task>
-	audio_task();
+  while (1)
  8000a2e:	f7ff fd02 	bl	8000436 <audio_task>
-	tud_task();
+  /* USER CODE BEGIN WHILE */
  8000a32:	e7fa      	b.n	8000a2a <main+0x72>
- 8000a34:	2000035c 	.word	0x2000035c
+ 8000a34:	20000350 	.word	0x20000350
  8000a38:	0000bb80 	.word	0x0000bb80
- 8000a3c:	20000360 	.word	0x20000360
- 8000a40:	20000364 	.word	0x20000364
+ 8000a3c:	20000354 	.word	0x20000354
+ 8000a40:	20000358 	.word	0x20000358
  8000a44:	ffffbb80 	.word	0xffffbb80
 
 08000a48 <SystemClock_Config>:
-/**
-  * @brief System Clock Configuration
-  * @retval None
-  */
-void SystemClock_Config(void)
-{
+	tud_task();
+	audio_task();
+  }
+  /* USER CODE END 3 */
+}
+
  8000a48:	b590      	push	{r4, r7, lr}
  8000a4a:	b099      	sub	sp, #100	; 0x64
  8000a4c:	af00      	add	r7, sp, #0
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+/**
  8000a4e:	242c      	movs	r4, #44	; 0x2c
  8000a50:	193b      	adds	r3, r7, r4
  8000a52:	0018      	movs	r0, r3
@@ -1638,7 +1638,7 @@ void SystemClock_Config(void)
  8000a56:	001a      	movs	r2, r3
  8000a58:	2100      	movs	r1, #0
  8000a5a:	f006 fc12 	bl	8007282 <memset>
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  * @brief System Clock Configuration
  8000a5e:	231c      	movs	r3, #28
  8000a60:	18fb      	adds	r3, r7, r3
  8000a62:	0018      	movs	r0, r3
@@ -1646,155 +1646,155 @@ void SystemClock_Config(void)
  8000a66:	001a      	movs	r2, r3
  8000a68:	2100      	movs	r1, #0
  8000a6a:	f006 fc0a 	bl	8007282 <memset>
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+  * @retval None
  8000a6e:	1d3b      	adds	r3, r7, #4
  8000a70:	0018      	movs	r0, r3
  8000a72:	2318      	movs	r3, #24
  8000a74:	001a      	movs	r2, r3
  8000a76:	2100      	movs	r1, #0
  8000a78:	f006 fc03 	bl	8007282 <memset>
-
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  8000a7c:	193b      	adds	r3, r7, r4
  8000a7e:	2220      	movs	r2, #32
  8000a80:	601a      	str	r2, [r3, #0]
-  RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
  8000a82:	193b      	adds	r3, r7, r4
  8000a84:	2201      	movs	r2, #1
  8000a86:	621a      	str	r2, [r3, #32]
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+
  8000a88:	193b      	adds	r3, r7, r4
  8000a8a:	2200      	movs	r2, #0
  8000a8c:	625a      	str	r2, [r3, #36]	; 0x24
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  /** Initializes the RCC Oscillators according to the specified parameters
  8000a8e:	193b      	adds	r3, r7, r4
  8000a90:	0018      	movs	r0, r3
  8000a92:	f000 fbf1 	bl	8001278 <HAL_RCC_OscConfig>
  8000a96:	1e03      	subs	r3, r0, #0
  8000a98:	d001      	beq.n	8000a9e <SystemClock_Config+0x56>
-  {
-    Error_Handler();
- 8000a9a:	f000 f867 	bl	8000b6c <Error_Handler>
-  }
-
-  /** Initializes the CPU, AHB and APB buses clocks
+  * in the RCC_OscInitTypeDef structure.
   */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ 8000a9a:	f000 f867 	bl	8000b6c <Error_Handler>
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
+  RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
  8000a9e:	211c      	movs	r1, #28
  8000aa0:	187b      	adds	r3, r7, r1
  8000aa2:	2207      	movs	r2, #7
  8000aa4:	601a      	str	r2, [r3, #0]
-                              |RCC_CLOCKTYPE_PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI48;
+    Error_Handler();
+  }
  8000aa6:	187b      	adds	r3, r7, r1
  8000aa8:	2203      	movs	r2, #3
  8000aaa:	605a      	str	r2, [r3, #4]
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+
  8000aac:	187b      	adds	r3, r7, r1
  8000aae:	2200      	movs	r2, #0
  8000ab0:	609a      	str	r2, [r3, #8]
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  /** Initializes the CPU, AHB and APB buses clocks
  8000ab2:	187b      	adds	r3, r7, r1
  8000ab4:	2200      	movs	r2, #0
  8000ab6:	60da      	str	r2, [r3, #12]
-
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
  8000ab8:	187b      	adds	r3, r7, r1
  8000aba:	2101      	movs	r1, #1
  8000abc:	0018      	movs	r0, r3
  8000abe:	f000 ff61 	bl	8001984 <HAL_RCC_ClockConfig>
  8000ac2:	1e03      	subs	r3, r0, #0
  8000ac4:	d001      	beq.n	8000aca <SystemClock_Config+0x82>
-  {
-    Error_Handler();
+                              |RCC_CLOCKTYPE_PCLK1;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI48;
  8000ac6:	f000 f851 	bl	8000b6c <Error_Handler>
-  }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
  8000aca:	1d3b      	adds	r3, r7, #4
  8000acc:	2280      	movs	r2, #128	; 0x80
  8000ace:	0292      	lsls	r2, r2, #10
  8000ad0:	601a      	str	r2, [r3, #0]
-  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
+
  8000ad2:	1d3b      	adds	r3, r7, #4
  8000ad4:	2200      	movs	r2, #0
  8000ad6:	615a      	str	r2, [r3, #20]
-
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  {
  8000ad8:	1d3b      	adds	r3, r7, #4
  8000ada:	0018      	movs	r0, r3
  8000adc:	f001 f8ac 	bl	8001c38 <HAL_RCCEx_PeriphCLKConfig>
  8000ae0:	1e03      	subs	r3, r0, #0
  8000ae2:	d001      	beq.n	8000ae8 <SystemClock_Config+0xa0>
-  {
     Error_Handler();
- 8000ae4:	f000 f842 	bl	8000b6c <Error_Handler>
   }
-}
+ 8000ae4:	f000 f842 	bl	8000b6c <Error_Handler>
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USB;
+  PeriphClkInit.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
  8000ae8:	46c0      	nop			; (mov r8, r8)
  8000aea:	46bd      	mov	sp, r7
  8000aec:	b019      	add	sp, #100	; 0x64
  8000aee:	bd90      	pop	{r4, r7, pc}
 
 08000af0 <MX_USB_PCD_Init>:
-  * @brief USB Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USB_PCD_Init(void)
-{
+
+  /* USER CODE END I2S1_Init 2 */
+
+}
+
+/**
  8000af0:	b580      	push	{r7, lr}
  8000af2:	af00      	add	r7, sp, #0
-  /* USER CODE END USB_Init 0 */
+  */
+static void MX_USART2_UART_Init(void)
+{
 
-  /* USER CODE BEGIN USB_Init 1 */
+  /* USER CODE BEGIN USART2_Init 0 */
 
-  /* USER CODE END USB_Init 1 */
-  hpcd_USB_FS.Instance = USB;
  8000af4:	4b0f      	ldr	r3, [pc, #60]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000af6:	4a10      	ldr	r2, [pc, #64]	; (8000b38 <MX_USB_PCD_Init+0x48>)
  8000af8:	601a      	str	r2, [r3, #0]
-  hpcd_USB_FS.Init.dev_endpoints = 8;
+  /* USER CODE END USART2_Init 0 */
  8000afa:	4b0e      	ldr	r3, [pc, #56]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000afc:	2208      	movs	r2, #8
  8000afe:	605a      	str	r2, [r3, #4]
-  hpcd_USB_FS.Init.speed = PCD_SPEED_FULL;
+
  8000b00:	4b0c      	ldr	r3, [pc, #48]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000b02:	2202      	movs	r2, #2
  8000b04:	609a      	str	r2, [r3, #8]
-  hpcd_USB_FS.Init.phy_itface = PCD_PHY_EMBEDDED;
+  /* USER CODE BEGIN USART2_Init 1 */
  8000b06:	4b0b      	ldr	r3, [pc, #44]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000b08:	2202      	movs	r2, #2
  8000b0a:	611a      	str	r2, [r3, #16]
-  hpcd_USB_FS.Init.low_power_enable = DISABLE;
+
  8000b0c:	4b09      	ldr	r3, [pc, #36]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000b0e:	2200      	movs	r2, #0
  8000b10:	619a      	str	r2, [r3, #24]
-  hpcd_USB_FS.Init.lpm_enable = DISABLE;
+  /* USER CODE END USART2_Init 1 */
  8000b12:	4b08      	ldr	r3, [pc, #32]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000b14:	2200      	movs	r2, #0
  8000b16:	61da      	str	r2, [r3, #28]
-  hpcd_USB_FS.Init.battery_charging_enable = DISABLE;
+  huart2.Instance = USART2;
  8000b18:	4b06      	ldr	r3, [pc, #24]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000b1a:	2200      	movs	r2, #0
  8000b1c:	621a      	str	r2, [r3, #32]
-  if (HAL_PCD_Init(&hpcd_USB_FS) != HAL_OK)
+  huart2.Init.BaudRate = 9600;
  8000b1e:	4b05      	ldr	r3, [pc, #20]	; (8000b34 <MX_USB_PCD_Init+0x44>)
  8000b20:	0018      	movs	r0, r3
  8000b22:	f000 fa6f 	bl	8001004 <HAL_PCD_Init>
  8000b26:	1e03      	subs	r3, r0, #0
  8000b28:	d001      	beq.n	8000b2e <MX_USB_PCD_Init+0x3e>
-  {
-    Error_Handler();
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
  8000b2a:	f000 f81f 	bl	8000b6c <Error_Handler>
-  }
-  /* USER CODE BEGIN USB_Init 2 */
-
-  /* USER CODE END USB_Init 2 */
-
-}
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
  8000b2e:	46c0      	nop			; (mov r8, r8)
  8000b30:	46bd      	mov	sp, r7
  8000b32:	bd80      	pop	{r7, pc}
@@ -1802,18 +1802,18 @@ static void MX_USB_PCD_Init(void)
  8000b38:	40005c00 	.word	0x40005c00
 
 08000b3c <MX_GPIO_Init>:
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_GPIO_Init(void)
-{
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
  8000b3c:	b580      	push	{r7, lr}
  8000b3e:	b082      	sub	sp, #8
  8000b40:	af00      	add	r7, sp, #0
+}
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOA_CLK_ENABLE();
+/**
  8000b42:	4b09      	ldr	r3, [pc, #36]	; (8000b68 <MX_GPIO_Init+0x2c>)
  8000b44:	695a      	ldr	r2, [r3, #20]
  8000b46:	4b08      	ldr	r3, [pc, #32]	; (8000b68 <MX_GPIO_Init+0x2c>)
@@ -1828,8 +1828,8 @@ static void MX_GPIO_Init(void)
  8000b58:	4013      	ands	r3, r2
  8000b5a:	607b      	str	r3, [r7, #4]
  8000b5c:	687b      	ldr	r3, [r7, #4]
-
-}
+  * @brief USB Initialization Function
+  * @param None
  8000b5e:	46c0      	nop			; (mov r8, r8)
  8000b60:	46bd      	mov	sp, r7
  8000b62:	b002      	add	sp, #8
@@ -1838,12 +1838,12 @@ static void MX_GPIO_Init(void)
  8000b68:	40021000 	.word	0x40021000
 
 08000b6c <Error_Handler>:
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
-void Error_Handler(void)
-{
+  /* USER CODE BEGIN USB_Init 0 */
+
+  /* USER CODE END USB_Init 0 */
+
+  /* USER CODE BEGIN USB_Init 1 */
+
  8000b6c:	b580      	push	{r7, lr}
  8000b6e:	af00      	add	r7, sp, #0
   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
@@ -1855,10 +1855,10 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  8000b70:	b672      	cpsid	i
 }
  8000b72:	46c0      	nop			; (mov r8, r8)
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
+  /* USER CODE END USB_Init 1 */
+  hpcd_USB_FS.Instance = USB;
+  hpcd_USB_FS.Init.dev_endpoints = 8;
+  hpcd_USB_FS.Init.speed = PCD_SPEED_FULL;
  8000b74:	e7fe      	b.n	8000b74 <Error_Handler+0x8>
 	...
 
@@ -1919,27 +1919,27 @@ void HAL_MspInit(void)
 
 08000bc0 <HAL_PCD_MspInit>:
 * This function configures the hardware resources used in this example
-* @param hpcd: PCD handle pointer
+* @param huart: UART handle pointer
 * @retval None
 */
-void HAL_PCD_MspInit(PCD_HandleTypeDef* hpcd)
+void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
  8000bc0:	b580      	push	{r7, lr}
  8000bc2:	b084      	sub	sp, #16
  8000bc4:	af00      	add	r7, sp, #0
  8000bc6:	6078      	str	r0, [r7, #4]
-  if(hpcd->Instance==USB)
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
  8000bc8:	687b      	ldr	r3, [r7, #4]
  8000bca:	681b      	ldr	r3, [r3, #0]
  8000bcc:	4a0a      	ldr	r2, [pc, #40]	; (8000bf8 <HAL_PCD_MspInit+0x38>)
  8000bce:	4293      	cmp	r3, r2
  8000bd0:	d10d      	bne.n	8000bee <HAL_PCD_MspInit+0x2e>
+  if(huart->Instance==USART2)
   {
-  /* USER CODE BEGIN USB_MspInit 0 */
+  /* USER CODE BEGIN USART2_MspInit 0 */
 
-  /* USER CODE END USB_MspInit 0 */
+  /* USER CODE END USART2_MspInit 0 */
     /* Peripheral clock enable */
-    __HAL_RCC_USB_CLK_ENABLE();
  8000bd2:	4b0a      	ldr	r3, [pc, #40]	; (8000bfc <HAL_PCD_MspInit+0x3c>)
  8000bd4:	69da      	ldr	r2, [r3, #28]
  8000bd6:	4b09      	ldr	r3, [pc, #36]	; (8000bfc <HAL_PCD_MspInit+0x3c>)
@@ -1954,12 +1954,12 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* hpcd)
  8000be8:	4013      	ands	r3, r2
  8000bea:	60fb      	str	r3, [r7, #12]
  8000bec:	68fb      	ldr	r3, [r7, #12]
-  /* USER CODE BEGIN USB_MspInit 1 */
+    __HAL_RCC_USART2_CLK_ENABLE();
 
-  /* USER CODE END USB_MspInit 1 */
-  }
-
-}
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    /**USART2 GPIO Configuration
+    PA2     ------> USART2_TX
+    PA15     ------> USART2_RX
  8000bee:	46c0      	nop			; (mov r8, r8)
  8000bf0:	46bd      	mov	sp, r7
  8000bf2:	b004      	add	sp, #16
@@ -1969,109 +1969,109 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef* hpcd)
  8000bfc:	40021000 	.word	0x40021000
 
 08000c00 <NMI_Handler>:
-/******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
   */
 void NMI_Handler(void)
 {
+  /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
  8000c00:	b580      	push	{r7, lr}
  8000c02:	af00      	add	r7, sp, #0
-  /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
 
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
   while (1)
+  {
  8000c04:	e7fe      	b.n	8000c04 <NMI_Handler+0x4>
 
 08000c06 <HardFault_Handler>:
-
 /**
   * @brief This function handles Hard fault interrupt.
   */
 void HardFault_Handler(void)
 {
+  /* USER CODE BEGIN HardFault_IRQn 0 */
  8000c06:	b580      	push	{r7, lr}
  8000c08:	af00      	add	r7, sp, #0
-  /* USER CODE BEGIN HardFault_IRQn 0 */
 
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
+  {
  8000c0a:	e7fe      	b.n	8000c0a <HardFault_Handler+0x4>
 
 08000c0c <SVC_Handler>:
-
 /**
   * @brief This function handles System service call via SWI instruction.
   */
 void SVC_Handler(void)
 {
+  /* USER CODE BEGIN SVC_IRQn 0 */
  8000c0c:	b580      	push	{r7, lr}
  8000c0e:	af00      	add	r7, sp, #0
-
   /* USER CODE END SVC_IRQn 0 */
   /* USER CODE BEGIN SVC_IRQn 1 */
 
   /* USER CODE END SVC_IRQn 1 */
 }
+
  8000c10:	46c0      	nop			; (mov r8, r8)
  8000c12:	46bd      	mov	sp, r7
  8000c14:	bd80      	pop	{r7, pc}
 
 08000c16 <PendSV_Handler>:
-
 /**
   * @brief This function handles Pendable request for system service.
   */
 void PendSV_Handler(void)
 {
+  /* USER CODE BEGIN PendSV_IRQn 0 */
  8000c16:	b580      	push	{r7, lr}
  8000c18:	af00      	add	r7, sp, #0
-
   /* USER CODE END PendSV_IRQn 0 */
   /* USER CODE BEGIN PendSV_IRQn 1 */
 
   /* USER CODE END PendSV_IRQn 1 */
 }
+
  8000c1a:	46c0      	nop			; (mov r8, r8)
  8000c1c:	46bd      	mov	sp, r7
  8000c1e:	bd80      	pop	{r7, pc}
 
 08000c20 <SysTick_Handler>:
-
 /**
   * @brief This function handles System tick timer.
   */
 void SysTick_Handler(void)
 {
+  /* USER CODE BEGIN SysTick_IRQn 0 */
  8000c20:	b580      	push	{r7, lr}
  8000c22:	af00      	add	r7, sp, #0
-  /* USER CODE BEGIN SysTick_IRQn 0 */
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
- 8000c24:	f000 f91e 	bl	8000e64 <HAL_IncTick>
   /* USER CODE BEGIN SysTick_IRQn 1 */
+ 8000c24:	f000 f91e 	bl	8000e64 <HAL_IncTick>
 
   /* USER CODE END SysTick_IRQn 1 */
 }
+
  8000c28:	46c0      	nop			; (mov r8, r8)
  8000c2a:	46bd      	mov	sp, r7
  8000c2c:	bd80      	pop	{r7, pc}
 
 08000c2e <USB_IRQHandler>:
-/* please refer to the startup file (startup_stm32f0xx.s).                    */
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
 void USB_IRQHandler(void)
 {
+  tud_int_handler(0);
  8000c2e:	b580      	push	{r7, lr}
  8000c30:	af00      	add	r7, sp, #0
-  tud_int_handler(0);
+}
  8000c32:	2000      	movs	r0, #0
  8000c34:	f005 fd4a 	bl	80066cc <dcd_int_handler>
-}
+/* USER CODE END 1 */
  8000c38:	46c0      	nop			; (mov r8, r8)
  8000c3a:	46bd      	mov	sp, r7
  8000c3c:	bd80      	pop	{r7, pc}
@@ -2278,8 +2278,8 @@ uint16_t const* tud_descriptor_string_cb(uint8_t index, uint16_t langid)
  8000d40:	b004      	add	sp, #16
  8000d42:	bd80      	pop	{r7, pc}
  8000d44:	20000004 	.word	0x20000004
- 8000d48:	200004fe 	.word	0x200004fe
- 8000d4c:	200004fc 	.word	0x200004fc
+ 8000d48:	200003ce 	.word	0x200003ce
+ 8000d4c:	200003cc 	.word	0x200003cc
 
 08000d50 <Reset_Handler>:
 
@@ -2419,11 +2419,11 @@ LoopForever:
   ldr r1, =_edata
  8000dc0:	20000038 	.word	0x20000038
   ldr r2, =_sidata
- 8000dc4:	08007478 	.word	0x08007478
+ 8000dc4:	0800746c 	.word	0x0800746c
   ldr r2, =_sbss
  8000dc8:	20000038 	.word	0x20000038
   ldr r4, =_ebss
- 8000dcc:	20000b20 	.word	0x20000b20
+ 8000dcc:	20000794 	.word	0x20000794
 
 08000dd0 <ADC1_IRQHandler>:
  * @retval : None
@@ -2571,7 +2571,7 @@ __weak void HAL_IncTick(void)
  8000e7c:	bd80      	pop	{r7, pc}
  8000e7e:	46c0      	nop			; (mov r8, r8)
  8000e80:	2000001c 	.word	0x2000001c
- 8000e84:	2000053c 	.word	0x2000053c
+ 8000e84:	2000040c 	.word	0x2000040c
 
 08000e88 <HAL_GetTick>:
   * @note   This function is declared as __weak  to be overwritten  in case of other 
@@ -2590,7 +2590,7 @@ __weak uint32_t HAL_GetTick(void)
  8000e92:	46bd      	mov	sp, r7
  8000e94:	bd80      	pop	{r7, pc}
  8000e96:	46c0      	nop			; (mov r8, r8)
- 8000e98:	2000053c 	.word	0x2000053c
+ 8000e98:	2000040c 	.word	0x2000040c
 
 08000e9c <__NVIC_SetPriority>:
   \param [in]      IRQn  Interrupt number.
@@ -5760,7 +5760,7 @@ uint16_t tud_audio_n_write_support_ff(uint8_t func_id, uint8_t ff_idx, const voi
  8001faa:	b003      	add	sp, #12
  8001fac:	bd90      	pop	{r4, r7, pc}
  8001fae:	46c0      	nop			; (mov r8, r8)
- 8001fb0:	200008bc 	.word	0x200008bc
+ 8001fb0:	20000530 	.word	0x20000530
 
 08001fb4 <audiod_tx_done_cb>:
 // If you prefer your own (more efficient) implementation suiting your purpose set CFG_TUD_AUDIO_ENABLE_ENCODING = 0 and use tud_audio_n_write.
@@ -6717,11 +6717,11 @@ void audiod_init(void)
         audio->n_tx_supp_ff = CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO;
  8002548:	683b      	ldr	r3, [r7, #0]
  800254a:	222c      	movs	r2, #44	; 0x2c
- 800254c:	2102      	movs	r1, #2
+ 800254c:	2101      	movs	r1, #1
  800254e:	5499      	strb	r1, [r3, r2]
         audio->tx_supp_ff_sz_max = CFG_TUD_AUDIO_FUNC_1_TX_SUPP_SW_FIFO_SZ;
  8002550:	683b      	ldr	r3, [r7, #0]
- 8002552:	22c4      	movs	r2, #196	; 0xc4
+ 8002552:	2262      	movs	r2, #98	; 0x62
  8002554:	85da      	strh	r2, [r3, #46]	; 0x2e
         for (uint8_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
  8002556:	1dbb      	adds	r3, r7, #6
@@ -6740,14 +6740,14 @@ void audiod_init(void)
  800256c:	1898      	adds	r0, r3, r2
  800256e:	1dbb      	adds	r3, r7, #6
  8002570:	781b      	ldrb	r3, [r3, #0]
- 8002572:	22c4      	movs	r2, #196	; 0xc4
+ 8002572:	2262      	movs	r2, #98	; 0x62
  8002574:	435a      	muls	r2, r3
  8002576:	4b19      	ldr	r3, [pc, #100]	; (80025dc <audiod_init+0x100>)
  8002578:	18d1      	adds	r1, r2, r3
  800257a:	2301      	movs	r3, #1
  800257c:	9300      	str	r3, [sp, #0]
  800257e:	2301      	movs	r3, #1
- 8002580:	22c4      	movs	r2, #196	; 0xc4
+ 8002580:	2262      	movs	r2, #98	; 0x62
  8002582:	f001 f8b9 	bl	80036f8 <tu_fifo_config>
         for (uint8_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
  8002586:	1dbb      	adds	r3, r7, #6
@@ -6757,8 +6757,8 @@ void audiod_init(void)
  800258e:	701a      	strb	r2, [r3, #0]
  8002590:	1dbb      	adds	r3, r7, #6
  8002592:	781b      	ldrb	r3, [r3, #0]
- 8002594:	2b01      	cmp	r3, #1
- 8002596:	d9e2      	bls.n	800255e <audiod_init+0x82>
+ 8002594:	2b00      	cmp	r3, #0
+ 8002596:	d0e2      	beq.n	800255e <audiod_init+0x82>
 #if CFG_FIFO_MUTEX
           tu_fifo_config_mutex(&tx_supp_ff_1[cnt], osal_mutex_create(&tx_supp_ff_mutex_wr_1[cnt]), NULL);
 #endif
@@ -6782,7 +6782,7 @@ void audiod_init(void)
         audio->n_channels_per_ff_tx = CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX;
  80025a2:	683b      	ldr	r3, [r7, #0]
  80025a4:	2225      	movs	r2, #37	; 0x25
- 80025a6:	2102      	movs	r1, #2
+ 80025a6:	2101      	movs	r1, #1
  80025a8:	5499      	strb	r1, [r3, r2]
         break;
  80025aa:	46c0      	nop			; (mov r8, r8)
@@ -6807,12 +6807,12 @@ void audiod_init(void)
  80025c2:	46bd      	mov	sp, r7
  80025c4:	b002      	add	sp, #8
  80025c6:	bd80      	pop	{r7, pc}
- 80025c8:	200008bc 	.word	0x200008bc
- 80025cc:	200006c8 	.word	0x200006c8
- 80025d0:	20000708 	.word	0x20000708
- 80025d4:	20000540 	.word	0x20000540
- 80025d8:	20000894 	.word	0x20000894
- 80025dc:	2000070c 	.word	0x2000070c
+ 80025c8:	20000530 	.word	0x20000530
+ 80025cc:	20000474 	.word	0x20000474
+ 80025d0:	200004b4 	.word	0x200004b4
+ 80025d4:	20000410 	.word	0x20000410
+ 80025d8:	2000051c 	.word	0x2000051c
+ 80025dc:	200004b8 	.word	0x200004b8
 
 080025e0 <audiod_reset>:
 
@@ -6910,7 +6910,7 @@ void audiod_reset(uint8_t rhport)
  800266a:	46bd      	mov	sp, r7
  800266c:	b005      	add	sp, #20
  800266e:	bd90      	pop	{r4, r7, pc}
- 8002670:	200008bc 	.word	0x200008bc
+ 8002670:	20000530 	.word	0x20000530
 
 08002674 <audiod_open>:
 
@@ -7093,7 +7093,7 @@ uint16_t audiod_open(uint8_t rhport, tusb_desc_interface_t const * itf_desc, uin
  800276a:	46bd      	mov	sp, r7
  800276c:	b004      	add	sp, #16
  800276e:	bd80      	pop	{r7, pc}
- 8002770:	200008bc 	.word	0x200008bc
+ 8002770:	20000530 	.word	0x20000530
 
 08002774 <audiod_get_interface>:
 
@@ -7187,7 +7187,7 @@ TU_ATTR_ALWAYS_INLINE static inline uint8_t tu_u16_low (uint16_t ui16) { return 
  8002806:	46bd      	mov	sp, r7
  8002808:	b007      	add	sp, #28
  800280a:	bd90      	pop	{r4, r7, pc}
- 800280c:	200008bc 	.word	0x200008bc
+ 800280c:	20000530 	.word	0x20000530
 
 08002810 <audiod_set_interface>:
 
@@ -7766,7 +7766,7 @@ static bool audiod_set_interface(uint8_t rhport, tusb_control_request_t const * 
  8002ba6:	46bd      	mov	sp, r7
  8002ba8:	b00f      	add	sp, #60	; 0x3c
  8002baa:	bd90      	pop	{r4, r7, pc}
- 8002bac:	200008bc 	.word	0x200008bc
+ 8002bac:	20000530 	.word	0x20000530
  8002bb0:	080009a1 	.word	0x080009a1
  8002bb4:	00000000 	.word	0x00000000
 
@@ -8037,7 +8037,7 @@ static bool audiod_control_complete(uint8_t rhport, tusb_control_request_t const
  8002d3c:	bd80      	pop	{r7, pc}
  8002d3e:	46c0      	nop			; (mov r8, r8)
  8002d40:	08000505 	.word	0x08000505
- 8002d44:	200008bc 	.word	0x200008bc
+ 8002d44:	20000530 	.word	0x20000530
  8002d48:	080004a3 	.word	0x080004a3
  8002d4c:	08000441 	.word	0x08000441
 
@@ -8405,7 +8405,7 @@ static bool audiod_control_request(uint8_t rhport, tusb_control_request_t const 
  8002f54:	080006ad 	.word	0x080006ad
  8002f58:	0800065b 	.word	0x0800065b
  8002f5c:	08000609 	.word	0x08000609
- 8002f60:	200008bc 	.word	0x200008bc
+ 8002f60:	20000530 	.word	0x20000530
 
 08002f64 <audiod_control_xfer_cb>:
 
@@ -8579,7 +8579,7 @@ bool audiod_xfer_cb(uint8_t rhport, uint8_t ep_addr, xfer_result_t result, uint3
  800305a:	b005      	add	sp, #20
  800305c:	bd90      	pop	{r4, r7, pc}
  800305e:	46c0      	nop			; (mov r8, r8)
- 8003060:	200008bc 	.word	0x200008bc
+ 8003060:	20000530 	.word	0x20000530
 
 08003064 <tud_audio_buffer_and_schedule_control_xfer>:
 
@@ -8823,7 +8823,7 @@ bool tud_audio_buffer_and_schedule_control_xfer(uint8_t rhport, tusb_control_req
  80031de:	46bd      	mov	sp, r7
  80031e0:	b006      	add	sp, #24
  80031e2:	bdb0      	pop	{r4, r5, r7, pc}
- 80031e4:	200008bc 	.word	0x200008bc
+ 80031e4:	20000530 	.word	0x20000530
 
 080031e8 <audiod_get_AS_interface_index>:
 
@@ -9026,7 +9026,7 @@ static bool audiod_get_AS_interface_index_global(uint8_t itf, uint8_t *func_id, 
  8003306:	46bd      	mov	sp, r7
  8003308:	b006      	add	sp, #24
  800330a:	bdb0      	pop	{r4, r5, r7, pc}
- 800330c:	200008bc 	.word	0x200008bc
+ 800330c:	20000530 	.word	0x20000530
 
 08003310 <audiod_verify_entity_exists>:
 
@@ -9166,7 +9166,7 @@ static bool audiod_verify_entity_exists(uint8_t itf, uint8_t entityID, uint8_t *
  80033e6:	b006      	add	sp, #24
  80033e8:	bd80      	pop	{r7, pc}
  80033ea:	46c0      	nop			; (mov r8, r8)
- 80033ec:	200008bc 	.word	0x200008bc
+ 80033ec:	20000530 	.word	0x20000530
 
 080033f0 <audiod_verify_itf_exists>:
 
@@ -9300,7 +9300,7 @@ static bool audiod_verify_itf_exists(uint8_t itf, uint8_t *func_id)
  80034be:	b006      	add	sp, #24
  80034c0:	bd80      	pop	{r7, pc}
  80034c2:	46c0      	nop			; (mov r8, r8)
- 80034c4:	200008bc 	.word	0x200008bc
+ 80034c4:	20000530 	.word	0x20000530
 
 080034c8 <audiod_verify_ep_exists>:
 
@@ -9442,7 +9442,7 @@ static bool audiod_verify_ep_exists(uint8_t ep, uint8_t *func_id)
  80035a2:	b007      	add	sp, #28
  80035a4:	bd90      	pop	{r4, r7, pc}
  80035a6:	46c0      	nop			; (mov r8, r8)
- 80035a8:	200008bc 	.word	0x200008bc
+ 80035a8:	20000530 	.word	0x20000530
 
 080035ac <audiod_parse_for_AS_params>:
 #if CFG_TUD_AUDIO_ENABLE_ENCODING || CFG_TUD_AUDIO_ENABLE_DECODING
@@ -9683,7 +9683,7 @@ uint8_t audiod_get_audio_fct_idx(audiod_function_t * audio)
  80036ee:	46bd      	mov	sp, r7
  80036f0:	b004      	add	sp, #16
  80036f2:	bd80      	pop	{r7, pc}
- 80036f4:	200008bc 	.word	0x200008bc
+ 80036f4:	20000530 	.word	0x20000530
 
 080036f8 <tu_fifo_config>:
   TU_FIFO_COPY_INC,            ///< Copy from/to an increasing source/destination address - default mode
@@ -11778,9 +11778,9 @@ static inline usbd_class_driver_t const * get_driver(uint8_t drvid)
  800433c:	b002      	add	sp, #8
  800433e:	bd80      	pop	{r7, pc}
  8004340:	00000000 	.word	0x00000000
- 8004344:	20000928 	.word	0x20000928
- 8004348:	20000924 	.word	0x20000924
- 800434c:	080073bc 	.word	0x080073bc
+ 8004344:	2000059c 	.word	0x2000059c
+ 8004348:	20000598 	.word	0x20000598
+ 800434c:	080073b0 	.word	0x080073b0
 
 08004350 <tud_inited>:
 
@@ -11929,12 +11929,12 @@ bool tud_init (uint8_t rhport)
  8004416:	46bd      	mov	sp, r7
  8004418:	b005      	add	sp, #20
  800441a:	bd90      	pop	{r4, r7, pc}
- 800441c:	200008f0 	.word	0x200008f0
+ 800441c:	20000564 	.word	0x20000564
  8004420:	20000020 	.word	0x20000020
- 8004424:	200009ec 	.word	0x200009ec
+ 8004424:	20000660 	.word	0x20000660
  8004428:	00000000 	.word	0x00000000
- 800442c:	20000928 	.word	0x20000928
- 8004430:	20000924 	.word	0x20000924
+ 800442c:	2000059c 	.word	0x2000059c
+ 8004430:	20000598 	.word	0x20000598
  8004434:	2000001d 	.word	0x2000001d
 
 08004438 <configuration_reset>:
@@ -12005,10 +12005,10 @@ static void configuration_reset(uint8_t rhport)
  80044a6:	b005      	add	sp, #20
  80044a8:	bd90      	pop	{r4, r7, pc}
  80044aa:	46c0      	nop			; (mov r8, r8)
- 80044ac:	20000928 	.word	0x20000928
- 80044b0:	200008f0 	.word	0x200008f0
- 80044b4:	200008f3 	.word	0x200008f3
- 80044b8:	20000903 	.word	0x20000903
+ 80044ac:	2000059c 	.word	0x2000059c
+ 80044b0:	20000564 	.word	0x20000564
+ 80044b4:	20000567 	.word	0x20000567
+ 80044b8:	20000577 	.word	0x20000577
 
 080044bc <usbd_reset>:
 
@@ -12485,11 +12485,11 @@ void tud_task (void)
  8004762:	46bd      	mov	sp, r7
  8004764:	b007      	add	sp, #28
  8004766:	bdf0      	pop	{r4, r5, r6, r7, pc}
- 8004768:	200009ec 	.word	0x200009ec
- 800476c:	080073d4 	.word	0x080073d4
- 8004770:	200008f0 	.word	0x200008f0
+ 8004768:	20000660 	.word	0x20000660
+ 800476c:	080073c8 	.word	0x080073c8
+ 8004770:	20000564 	.word	0x20000564
 	...
- 8004780:	20000928 	.word	0x20000928
+ 8004780:	2000059c 	.word	0x2000059c
 
 08004784 <invoke_class_control>:
 // Control Request Parser & Handling
@@ -13125,8 +13125,8 @@ TU_ATTR_ALWAYS_INLINE static inline uint8_t tu_u16_low (uint16_t ui16) { return 
     break;
  8004b22:	e0b4      	b.n	8004c8e <process_control_request+0x4d2>
  8004b24:	00000000 	.word	0x00000000
- 8004b28:	200008f0 	.word	0x200008f0
- 8004b2c:	080073f8 	.word	0x080073f8
+ 8004b28:	20000564 	.word	0x20000564
+ 8004b2c:	080073ec 	.word	0x080073ec
 
     //------------- Endpoint Request -------------//
     case TUSB_REQ_RCPT_ENDPOINT:
@@ -13369,7 +13369,7 @@ TU_ATTR_ALWAYS_INLINE static inline uint8_t tu_u16_low (uint16_t ui16) { return 
  8004c92:	46bd      	mov	sp, r7
  8004c94:	b00d      	add	sp, #52	; 0x34
  8004c96:	bdf0      	pop	{r4, r5, r6, r7, pc}
- 8004c98:	200008f0 	.word	0x200008f0
+ 8004c98:	20000564 	.word	0x20000564
 
 08004c9c <process_set_config>:
 
@@ -13703,9 +13703,9 @@ static bool process_set_config(uint8_t rhport, uint8_t cfg_num)
  8004e96:	b00d      	add	sp, #52	; 0x34
  8004e98:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8004e9a:	46c0      	nop			; (mov r8, r8)
- 8004e9c:	200008f0 	.word	0x200008f0
- 8004ea0:	20000903 	.word	0x20000903
- 8004ea4:	20000928 	.word	0x20000928
+ 8004e9c:	20000564 	.word	0x20000564
+ 8004ea0:	20000577 	.word	0x20000577
+ 8004ea4:	2000059c 	.word	0x2000059c
  8004ea8:	00000000 	.word	0x00000000
 
 08004eac <process_get_descriptor>:
@@ -14021,7 +14021,7 @@ TU_ATTR_ALWAYS_INLINE static inline uint16_t tu_unaligned_read16(const void* mem
  800506e:	b013      	add	sp, #76	; 0x4c
  8005070:	bd90      	pop	{r4, r7, pc}
  8005072:	46c0      	nop			; (mov r8, r8)
- 8005074:	08007420 	.word	0x08007420
+ 8005074:	08007414 	.word	0x08007414
 	...
 
 08005084 <dcd_event_handler>:
@@ -14220,8 +14220,8 @@ void dcd_event_handler(dcd_event_t const * event, bool in_isr)
  80051a2:	b007      	add	sp, #28
  80051a4:	bd90      	pop	{r4, r7, pc}
  80051a6:	46c0      	nop			; (mov r8, r8)
- 80051a8:	200008f0 	.word	0x200008f0
- 80051ac:	200009ec 	.word	0x200009ec
+ 80051a8:	20000564 	.word	0x20000564
+ 80051ac:	20000660 	.word	0x20000660
 
 080051b0 <dcd_event_bus_signal>:
 
@@ -14542,7 +14542,7 @@ bool usbd_edpt_open(uint8_t rhport, tusb_desc_endpoint_t const * desc_ep)
  80053ba:	b002      	add	sp, #8
  80053bc:	bd80      	pop	{r7, pc}
  80053be:	46c0      	nop			; (mov r8, r8)
- 80053c0:	200008f0 	.word	0x200008f0
+ 80053c0:	20000564 	.word	0x20000564
 
 080053c4 <usbd_edpt_xfer>:
   return tu_edpt_release(ep_state, NULL);
@@ -14692,7 +14692,7 @@ bool usbd_edpt_xfer(uint8_t rhport, uint8_t ep_addr, uint8_t * buffer, uint16_t 
  80054aa:	b005      	add	sp, #20
  80054ac:	bdf0      	pop	{r4, r5, r6, r7, pc}
  80054ae:	46c0      	nop			; (mov r8, r8)
- 80054b0:	200008f0 	.word	0x200008f0
+ 80054b0:	20000564 	.word	0x20000564
 
 080054b4 <usbd_edpt_busy>:
     return false;
@@ -14754,7 +14754,7 @@ bool usbd_edpt_busy(uint8_t rhport, uint8_t ep_addr)
  800550e:	46bd      	mov	sp, r7
  8005510:	b005      	add	sp, #20
  8005512:	bdf0      	pop	{r4, r5, r6, r7, pc}
- 8005514:	200008f0 	.word	0x200008f0
+ 8005514:	20000564 	.word	0x20000564
 
 08005518 <usbd_edpt_stall>:
 
@@ -14856,7 +14856,7 @@ void usbd_edpt_stall(uint8_t rhport, uint8_t ep_addr)
  80055be:	b005      	add	sp, #20
  80055c0:	bdf0      	pop	{r4, r5, r6, r7, pc}
  80055c2:	46c0      	nop			; (mov r8, r8)
- 80055c4:	200008f0 	.word	0x200008f0
+ 80055c4:	20000564 	.word	0x20000564
 
 080055c8 <usbd_edpt_clear_stall>:
 
@@ -14957,7 +14957,7 @@ void usbd_edpt_clear_stall(uint8_t rhport, uint8_t ep_addr)
  800566e:	b005      	add	sp, #20
  8005670:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8005672:	46c0      	nop			; (mov r8, r8)
- 8005674:	200008f0 	.word	0x200008f0
+ 8005674:	20000564 	.word	0x20000564
 
 08005678 <usbd_edpt_stalled>:
 
@@ -15016,7 +15016,7 @@ bool usbd_edpt_stalled(uint8_t rhport, uint8_t ep_addr)
  80056d2:	46bd      	mov	sp, r7
  80056d4:	b005      	add	sp, #20
  80056d6:	bdf0      	pop	{r4, r5, r6, r7, pc}
- 80056d8:	200008f0 	.word	0x200008f0
+ 80056d8:	20000564 	.word	0x20000564
 
 080056dc <usbd_edpt_close>:
  *
@@ -15123,7 +15123,7 @@ void usbd_edpt_close(uint8_t rhport, uint8_t ep_addr)
  8005784:	b005      	add	sp, #20
  8005786:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8005788:	08006c09 	.word	0x08006c09
- 800578c:	200008f0 	.word	0x200008f0
+ 800578c:	20000564 	.word	0x20000564
 
 08005790 <tu_edpt_dir>:
 {
@@ -15235,7 +15235,7 @@ bool tud_control_status(uint8_t rhport, tusb_control_request_t const * request)
  8005832:	46bd      	mov	sp, r7
  8005834:	b002      	add	sp, #8
  8005836:	bd80      	pop	{r7, pc}
- 8005838:	200009f0 	.word	0x200009f0
+ 8005838:	20000664 	.word	0x20000664
 
 0800583c <_data_stage_xact>:
 
@@ -15339,8 +15339,8 @@ TU_ATTR_ALWAYS_INLINE static inline uint16_t tu_min16 (uint16_t x, uint16_t y) {
  80058de:	b005      	add	sp, #20
  80058e0:	bd90      	pop	{r4, r7, pc}
  80058e2:	46c0      	nop			; (mov r8, r8)
- 80058e4:	200009f0 	.word	0x200009f0
- 80058e8:	20000a04 	.word	0x20000a04
+ 80058e4:	20000664 	.word	0x20000664
+ 80058e8:	20000678 	.word	0x20000678
 
 080058ec <tud_control_xfer>:
 
@@ -15480,7 +15480,7 @@ bool tud_control_xfer(uint8_t rhport, tusb_control_request_t const * request, vo
  80059c2:	b007      	add	sp, #28
  80059c4:	bd90      	pop	{r4, r7, pc}
  80059c6:	46c0      	nop			; (mov r8, r8)
- 80059c8:	200009f0 	.word	0x200009f0
+ 80059c8:	20000664 	.word	0x20000664
 
 080059cc <usbd_control_reset>:
 void usbd_control_set_request(tusb_control_request_t const *request);
@@ -15502,7 +15502,7 @@ void usbd_control_reset(void)
  80059de:	46bd      	mov	sp, r7
  80059e0:	bd80      	pop	{r7, pc}
  80059e2:	46c0      	nop			; (mov r8, r8)
- 80059e4:	200009f0 	.word	0x200009f0
+ 80059e4:	20000664 	.word	0x20000664
 
 080059e8 <usbd_control_set_complete_callback>:
 
@@ -15523,7 +15523,7 @@ void usbd_control_set_complete_callback( usbd_control_xfer_cb_t fp )
  80059fa:	b002      	add	sp, #8
  80059fc:	bd80      	pop	{r7, pc}
  80059fe:	46c0      	nop			; (mov r8, r8)
- 8005a00:	200009f0 	.word	0x200009f0
+ 8005a00:	20000664 	.word	0x20000664
 
 08005a04 <usbd_control_set_request>:
 
@@ -15560,7 +15560,7 @@ void usbd_control_set_request(tusb_control_request_t const *request)
  8005a32:	b002      	add	sp, #8
  8005a34:	bd80      	pop	{r7, pc}
  8005a36:	46c0      	nop			; (mov r8, r8)
- 8005a38:	200009f0 	.word	0x200009f0
+ 8005a38:	20000664 	.word	0x20000664
 
 08005a3c <usbd_control_xfer_cb>:
 
@@ -15806,9 +15806,9 @@ bool usbd_control_xfer_cb (uint8_t rhport, uint8_t ep_addr, xfer_result_t result
  8005b96:	b005      	add	sp, #20
  8005b98:	bd90      	pop	{r4, r7, pc}
  8005b9a:	46c0      	nop			; (mov r8, r8)
- 8005b9c:	200009f0 	.word	0x200009f0
+ 8005b9c:	20000664 	.word	0x20000664
  8005ba0:	080067e5 	.word	0x080067e5
- 8005ba4:	20000a04 	.word	0x20000a04
+ 8005ba4:	20000678 	.word	0x20000678
 
 08005ba8 <tu_edpt_dir>:
 {
@@ -16918,7 +16918,7 @@ static inline xfer_ctl_t* xfer_ctl_ptr(uint32_t epnum, uint32_t dir)
  8006232:	b002      	add	sp, #8
  8006234:	bd80      	pop	{r7, pc}
  8006236:	46c0      	nop			; (mov r8, r8)
- 8006238:	20000a44 	.word	0x20000a44
+ 8006238:	200006b8 	.word	0x200006b8
 
 0800623c <reg16_clear_bits>:
 //static bool dcd_write_packet_memory_ff(tu_fifo_t * ff, uint16_t dst, uint16_t wNBytes);
@@ -17301,8 +17301,8 @@ static void dcd_handle_bus_reset(void)
  8006454:	b002      	add	sp, #8
  8006456:	bd80      	pop	{r7, pc}
  8006458:	40005c00 	.word	0x40005c00
- 800645c:	08007460 	.word	0x08007460
- 8006460:	08007468 	.word	0x08007468
+ 800645c:	08007454 	.word	0x08007454
+ 8006460:	0800745c 	.word	0x0800745c
 
 08006464 <dcd_ep_ctr_tx_handler>:
 
@@ -17915,7 +17915,7 @@ void dcd_int_handler(uint8_t rhport) {
  80067d6:	46c0      	nop			; (mov r8, r8)
  80067d8:	40005c00 	.word	0x40005c00
  80067dc:	40005c40 	.word	0x40005c40
- 80067e0:	20000b1c 	.word	0x20000b1c
+ 80067e0:	20000790 	.word	0x20000790
 
 080067e4 <dcd_edpt0_status_complete>:
 //--------------------------------------------------------------------+
@@ -18060,7 +18060,7 @@ static void dcd_pma_alloc_reset(void)
  80068be:	46bd      	mov	sp, r7
  80068c0:	b002      	add	sp, #8
  80068c2:	bd80      	pop	{r7, pc}
- 80068c4:	20000b1e 	.word	0x20000b1e
+ 80068c4:	20000792 	.word	0x20000792
 
 080068c8 <dcd_pma_alloc>:
  * (This is done to simplify the code. More complicated algorithms could be used)
@@ -18177,7 +18177,7 @@ static uint16_t dcd_pma_alloc(uint8_t ep_addr, size_t length)
  8006970:	b007      	add	sp, #28
  8006972:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8006974:	0000ffff 	.word	0x0000ffff
- 8006978:	20000b1e 	.word	0x20000b1e
+ 8006978:	20000792 	.word	0x20000792
 
 0800697c <dcd_pma_free>:
 
@@ -18308,8 +18308,8 @@ static void dcd_pma_free(uint8_t ep_addr)
  8006a42:	b005      	add	sp, #20
  8006a44:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8006a46:	46c0      	nop			; (mov r8, r8)
- 8006a48:	20000b1d 	.word	0x20000b1d
- 8006a4c:	20000b1e 	.word	0x20000b1e
+ 8006a48:	20000791 	.word	0x20000791
+ 8006a4c:	20000792 	.word	0x20000792
 
 08006a50 <dcd_edpt_open>:
 
@@ -18912,7 +18912,7 @@ bool dcd_edpt_xfer (uint8_t rhport, uint8_t ep_addr, uint8_t * buffer, uint16_t 
  8006dfe:	b005      	add	sp, #20
  8006e00:	bdf0      	pop	{r4, r5, r6, r7, pc}
  8006e02:	46c0      	nop			; (mov r8, r8)
- 8006e04:	20000b04 	.word	0x20000b04
+ 8006e04:	20000778 	.word	0x20000778
  8006e08:	40005c00 	.word	0x40005c00
 
 08006e0c <dcd_edpt_stall>:
@@ -19687,10 +19687,10 @@ void tu_edpt_bind_driver(uint8_t ep2drv[][2], tusb_desc_interface_t const* desc_
  800725a:	4798      	blx	r3
  800725c:	3601      	adds	r6, #1
  800725e:	e7f2      	b.n	8007246 <__libc_init_array+0x1e>
- 8007260:	08007470 	.word	0x08007470
- 8007264:	08007470 	.word	0x08007470
- 8007268:	08007470 	.word	0x08007470
- 800726c:	08007474 	.word	0x08007474
+ 8007260:	08007464 	.word	0x08007464
+ 8007264:	08007464 	.word	0x08007464
+ 8007268:	08007464 	.word	0x08007464
+ 800726c:	08007468 	.word	0x08007468
 
 08007270 <memcpy>:
  8007270:	2300      	movs	r3, #0

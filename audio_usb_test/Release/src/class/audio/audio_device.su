@@ -1,0 +1,17 @@
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:2029:13:audiod_get_AS_interface_index	20	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:2081:13:audiod_verify_entity_exists	12	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:2108:13:audiod_verify_itf_exists	12	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:2133:13:audiod_verify_ep_exists	12	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:908:25:audiod_interleaved_copy_bytes_fast_encode	32	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:809:13:audiod_tx_done_cb	80	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:424:6:tud_audio_n_mounted	0	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:744:10:tud_audio_n_flush_tx_support_ff	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:759:6:tud_audio_n_clear_tx_support_ff	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:765:10:tud_audio_n_write_support_ff	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:771:12:tud_audio_n_get_tx_support_ff	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:1049:6:audiod_init	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:1362:6:audiod_reset	16	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:1395:10:audiod_open	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:1881:6:audiod_control_xfer_cb	72	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:1895:6:audiod_xfer_cb	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.c:1973:6:tud_audio_buffer_and_schedule_control_xfer	40	static
