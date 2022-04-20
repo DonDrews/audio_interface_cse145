@@ -47,8 +47,8 @@ Core/Src/stm32f0xx_it.o: ../Core/Src/stm32f0xx_it.c ../Core/Inc/main.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/hid/hid.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd.h \
- C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h \
- C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc.h
+ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.h \
+ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
 ../Core/Inc/stm32f0xx_hal_conf.h:
@@ -98,5 +98,5 @@ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/hid/hid.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd.h:
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h:
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc.h:
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.h:
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio.h:

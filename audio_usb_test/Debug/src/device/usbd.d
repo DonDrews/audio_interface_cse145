@@ -18,8 +18,8 @@ src/device/usbd.o: \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/hid/hid.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd.h \
- C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h \
- C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc.h \
+ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.h \
+ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_private.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd.h \
  C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_pvt.h \
@@ -43,8 +43,8 @@ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/hid/hid.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd.h:
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc_device.h:
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/cdc/cdc.h:
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio_device.h:
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/class/audio/audio.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_private.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd.h:
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_pvt.h:
