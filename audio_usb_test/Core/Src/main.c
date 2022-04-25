@@ -18,11 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "tusb.h"
-#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,7 +53,7 @@ PCD_HandleTypeDef hpcd_USB_FS;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_I2S1_Init(void);
+//static void MX_I2S1_Init(void);
 static void MX_USB_PCD_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
@@ -103,6 +103,7 @@ int __io_putchar(int ch) {
 	HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, 0xffff);
 	return 0;
 }
+
 
 
 void audio_task(void);
@@ -378,6 +379,8 @@ bool tud_audio_tx_done_pre_load_cb(uint8_t rhport, uint8_t itf, uint8_t ep_in, u
   return true;
 }
 
+
+
 bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uint8_t itf, uint8_t ep_in, uint8_t cur_alt_setting)
 {
   (void) rhport;
@@ -386,13 +389,12 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
   (void) ep_in;
   (void) cur_alt_setting;
 
-  uint16_t dataVal;
+  static uint16_t dataVal;
 
   // Generate dummy data
   for (uint16_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
   {
     uint16_t * p_buff = i2s_dummy_buffer[cnt];              // 2 bytes per sample
-    dataVal = 1;
     for (uint16_t cnt2 = 0; cnt2 < AUDIO_SAMPLE_RATE/1000; cnt2++)
     {
       for (uint8_t cnt3 = 0; cnt3 < CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX; cnt3++)
@@ -443,7 +445,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_I2S1_Init();
+  //MX_I2S1_Init();
   MX_USB_PCD_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
@@ -521,6 +523,7 @@ void SystemClock_Config(void)
   * @param None
   * @retval None
   */
+#if 0
 static void MX_I2S1_Init(void)
 {
   /* USER CODE BEGIN I2S1_Init 0 */
@@ -546,6 +549,7 @@ static void MX_I2S1_Init(void)
   /* USER CODE END I2S1_Init 2 */
 
 }
+#endif
 
 /**
   * @brief USART2 Initialization Function

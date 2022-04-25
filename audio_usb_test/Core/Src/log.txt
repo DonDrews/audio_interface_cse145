@@ -1,7 +1,3 @@
-USBD init
-sizeof(usbd_device_t) = 51
-AUDIO init
-Test123
 USBD Bus Reset : Full Speed
 
 USBD Setup Received 80 06 00 01 00 00 40 00
@@ -12,7 +8,7 @@ USBD Xfer Complete on EP 80 with 18 bytes
 USBD Xfer Complete on EP 00 with 0 bytes
 USBD Bus Reset : Full Speed
 
-USBD Setup Received 00 05 3A 00 00 00 00 00
+USBD Setup Received 00 05 2F 00 00 00 00 00
   Set Address
 USBD Xfer Complete on EP 80 with 0 bytes
 
@@ -86,129 +82,539 @@ USBD Xfer Complete on EP 00 with 0 bytes
 
 USBD Setup Received 00 09 01 00 00 00 00 00
   Set Configuration
-process_set_config 950: ASSERT FAILED
-process_control_request 701: ASSERT FAILED
-  Stall EP0
-USBD Bus Reset : Full Speed
-
-USBD Setup Received 80 06 00 01 00 00 40 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
-  Queue EP 00 with 0 bytes ...
-USBD Xfer Complete on EP 00 with 0 bytes
-USBD Bus Reset : Full Speed
-
-USBD Setup Received 00 05 3A 00 00 00 00 00
-  Set Address
+  AUDIO opened
+  Bind EP 81 to driver id 0
+  Queue EP 80 with 0 bytes ...
 USBD Xfer Complete on EP 80 with 0 bytes
 
-USBD Setup Received 80 06 00 01 00 00 12 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
-  Queue EP 00 with 0 bytes ...
-USBD Xfer Complete on EP 00 with 0 bytes
-
-USBD Setup Received 80 06 00 01 00 00 12 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
-  Queue EP 00 with 0 bytes ...
-USBD Xfer Complete on EP 00 with 0 bytes
-
-USBD Setup Received 80 06 00 02 00 00 09 00
-  Get Descriptor Configuration[0]
-  Queue EP 80 with 9 bytes ...
-USBD Xfer Complete on EP 80 with 9 bytes
-  Queue EP 00 with 0 bytes ...
-USBD Xfer Complete on EP 00 with 0 bytes
-
-USBD Setup Received 80 06 00 02 00 00 8D 00
-  Get Descriptor Configuration[0]
-  Queue EP 80 with 64 bytes ...
-USBD Xfer Complete on EP 80 with 64 bytes
-  Queue EP 80 with 64 bytes ...
-USBD Xfer Complete on EP 80 with 64 bytes
-  Queue EP 80 with 13 bytes ...
-USBD Xfer Complete on EP 80 with 13 bytes
-  Queue EP 00 with 0 bytes ...
-USBD Xfer Complete on EP 00 with 0 bytes
-
-USBD Setup Received 00 09 01 00 00 00 00 00
-  Set Configuration
-process_set_config 950: ASSERT FAILED
-process_control_request 701: ASSERT FAILED
-  Stall EP0
-USBD Bus Reset : Full Speed
-
-USBD Setup Received 80 06 00 01 00 00 40 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
-  Queue EP 00 with 0 bytes ...
-USBD Xfer Complete on EP 00 with 0 bytes
-USBD Bus Reset : Full Speed
-
-USBD Setup Received 00 05 3A 00 00 00 00 00
-  Set Address
+USBD Setup Received 01 0B 00 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 0
+  Queue EP 80 with 0 bytes ...
 USBD Xfer Complete on EP 80 with 0 bytes
 
-USBD Setup Received 80 06 00 01 00 00 12 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
+USBD Setup Received 80 06 02 03 09 04 04 00
+  Get Descriptor String[2]
+  Queue EP 80 with 4 bytes ...
+USBD Xfer Complete on EP 80 with 4 bytes
   Queue EP 00 with 0 bytes ...
 USBD Xfer Complete on EP 00 with 0 bytes
 
-USBD Setup Received 80 06 00 01 00 00 12 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
+USBD Setup Received 80 06 02 03 09 04 1A 00
+  Get Descriptor String[2]
+  Queue EP 80 with 26 bytes ...
+USBD Xfer Complete on EP 80 with 26 bytes
   Queue EP 00 with 0 bytes ...
 USBD Xfer Complete on EP 00 with 0 bytes
 
-USBD Setup Received 80 06 00 02 00 00 09 00
-  Get Descriptor Configuration[0]
-  Queue EP 80 with 9 bytes ...
-USBD Xfer Complete on EP 80 with 9 bytes
+USBD Setup Received 80 00 00 00 00 00 02 00
+  Get Status
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
   Queue EP 00 with 0 bytes ...
 USBD Xfer Complete on EP 00 with 0 bytes
 
-USBD Setup Received 80 06 00 02 00 00 8D 00
-  Get Descriptor Configuration[0]
-  Queue EP 80 with 64 bytes ...
-USBD Xfer Complete on EP 80 with 64 bytes
-  Queue EP 80 with 64 bytes ...
-USBD Xfer Complete on EP 80 with 64 bytes
-  Queue EP 80 with 13 bytes ...
-USBD Xfer Complete on EP 80 with 13 bytes
+USBD Setup Received 80 06 00 03 00 00 04 00
+  Get Descriptor String[0]
+  Queue EP 80 with 4 bytes ...
+USBD Xfer Complete on EP 80 with 4 bytes
   Queue EP 00 with 0 bytes ...
 USBD Xfer Complete on EP 00 with 0 bytes
 
-USBD Setup Received 00 09 01 00 00 00 00 00
-  Set Configuration
-process_set_config 950: ASSERT FAILED
-process_control_request 701: ASSERT FAILED
-  Stall EP0
-USBD Bus Reset : Full Speed
-
-USBD Setup Received 80 06 00 01 00 00 40 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
+USBD Setup Received 80 06 02 03 09 04 02 00
+  Get Descriptor String[2]
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
   Queue EP 00 with 0 bytes ...
 USBD Xfer Complete on EP 00 with 0 bytes
-USBD Bus Reset : Full Speed
 
-USBD Setup Received 00 05 3A 00 00 00 00 00
-  Set Address
+USBD Setup Received 80 06 02 03 09 04 1A 00
+  Get Descriptor String[2]
+  Queue EP 80 with 26 bytes ...
+USBD Xfer Complete on EP 80 with 26 bytes
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 02 00 02 00 02 08 00
+  AUDIO control request
+    Get Volume range of channel: 0
+  Queue EP 80 with 8 bytes ...
+USBD Xfer Complete on EP 80 with 8 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 02 01 02 00 02 08 00
+  AUDIO control request
+    Get Volume range of channel: 1
+  Queue EP 80 with 8 bytes ...
+USBD Xfer Complete on EP 80 with 8 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 02 00 01 00 04 00 01
+  AUDIO control request
+    Get Sample Freq. range
+  Queue EP 80 with 14 bytes ...
+USBD Xfer Complete on EP 80 with 14 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received 21 01 01 02 00 02 02 00
+  AUDIO control request
+  Queue EP 00 with 2 bytes ...
+USBD Xfer Complete on EP 00 with 2 bytes
+  0000:  00 00                                            |..|
+  AUDIO control complete
+    Set Volume: 0 dB of channel: 1
+  Queue EP 80 with 0 bytes ...
 USBD Xfer Complete on EP 80 with 0 bytes
 
-USBD Setup Received 80 06 00 01 00 00 12 00
-  Get Descriptor Device
-  Queue EP 80 with 18 bytes ...
-USBD Xfer Complete on EP 80 with 18 bytes
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
   Queue EP 00 with 0 bytes ...
 USBD Xfer Complete on EP 00 with 0 bytes
-USBD Suspend : Remote Wakeup = 0
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 00 02 00 01 06 00
+  AUDIO control request
+    Get terminal connector
+  Queue EP 80 with 6 bytes ...
+USBD Xfer Complete on EP 80 with 6 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 02 00 02 02 00
+  AUDIO control request
+    Get Volume of channel: 1
+  Queue EP 80 with 2 bytes ...
+USBD Xfer Complete on EP 80 with 2 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received A1 01 01 01 00 02 01 00
+  AUDIO control request
+    Get Mute of channel: 1
+  Queue EP 80 with 1 bytes ...
+USBD Xfer Complete on EP 80 with 1 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received 01 0B 01 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 1
+  Open EP 81 with Size = 98
+dcd_edpt_open 768: ASSERT FAILED
+audiod_set_interface 1577: ASSERT FAILED
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes
+
+USBD Setup Received 01 0B 00 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 0
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes
+
+USBD Setup Received A1 01 00 01 00 04 04 00
+  AUDIO control request
+    Get Sample Freq.
+  Queue EP 80 with 4 bytes ...
+USBD Xfer Complete on EP 80 with 4 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received 01 0B 01 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 1
+  Open EP 81 with Size = 98
+dcd_edpt_open 768: ASSERT FAILED
+audiod_set_interface 1577: ASSERT FAILED
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes
+
+USBD Setup Received 01 0B 00 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 0
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes
+
+USBD Setup Received 01 0B 01 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 1
+  Open EP 81 with Size = 98
+dcd_edpt_open 768: ASSERT FAILED
+audiod_set_interface 1577: ASSERT FAILED
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes
+
+USBD Setup Received 01 0B 00 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 0
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes
+
+USBD Setup Received A1 01 00 01 00 04 04 00
+  AUDIO control request
+    Get Sample Freq.
+  Queue EP 80 with 4 bytes ...
+USBD Xfer Complete on EP 80 with 4 bytes
+  AUDIO control complete
+  Queue EP 00 with 0 bytes ...
+USBD Xfer Complete on EP 00 with 0 bytes
+
+USBD Setup Received 01 0B 01 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 1
+  Open EP 81 with Size = 98
+dcd_edpt_open 768: ASSERT FAILED
+audiod_set_interface 1577: ASSERT FAILED
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes
+
+USBD Setup Received 01 0B 00 00 01 00 00 00
+  Set Interface
+  AUDIO control request
+  Set itf: 1 - alt: 0
+  Queue EP 80 with 0 bytes ...
+USBD Xfer Complete on EP 80 with 0 bytes

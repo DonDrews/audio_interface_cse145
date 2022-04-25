@@ -1,17 +1,10 @@
-00:22:18 **** Incremental Build of configuration Release for project audio_usb_test ****
+15:09:25 **** Incremental Build of configuration Debug for project audio_usb_test ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/usb_descriptors.c" -mcpu=cortex-m0 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F042x6 -c -I../Core/Inc -I"C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src" -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/hw/bsp" -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/usb_descriptors.d" -MT"Core/Src/usb_descriptors.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/usb_descriptors.o"
-arm-none-eabi-gcc -o "audio_usb_test.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\donsp\Documents\GitHub\audio_interface\audio_usb_test\STM32F042K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="audio_usb_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: audio_usb_test.elf
- 
 arm-none-eabi-size   audio_usb_test.elf 
-arm-none-eabi-objdump -h -S  audio_usb_test.elf  > "audio_usb_test.list"
    text	   data	    bss	    dec	    hex	filename
-  24204	    168	   3624	  27996	   6d5c	audio_usb_test.elf
+  27764	    168	   3560	  31492	   7b04	audio_usb_test.elf
 Finished building: default.size.stdout
  
-Finished building: audio_usb_test.list
- 
 
-00:22:19 Build Finished. 0 errors, 0 warnings. (took 629ms)
+15:09:26 Build Finished. 0 errors, 0 warnings. (took 401ms)
 
