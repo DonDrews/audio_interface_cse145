@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -53,9 +52,9 @@ PCD_HandleTypeDef hpcd_USB_FS;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-//static void MX_I2S1_Init(void);
-static void MX_USB_PCD_Init(void);
+static void MX_I2S1_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_USB_PCD_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -445,9 +444,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  //MX_I2S1_Init();
-  MX_USB_PCD_Init();
+  MX_I2S1_Init();
   MX_USART2_UART_Init();
+  MX_USB_PCD_Init();
   /* USER CODE BEGIN 2 */
 
   tusb_init();
@@ -523,9 +522,9 @@ void SystemClock_Config(void)
   * @param None
   * @retval None
   */
-#if 0
 static void MX_I2S1_Init(void)
 {
+
   /* USER CODE BEGIN I2S1_Init 0 */
 
   /* USER CODE END I2S1_Init 0 */
@@ -549,7 +548,6 @@ static void MX_I2S1_Init(void)
   /* USER CODE END I2S1_Init 2 */
 
 }
-#endif
 
 /**
   * @brief USART2 Initialization Function
@@ -567,7 +565,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;

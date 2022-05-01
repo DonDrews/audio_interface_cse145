@@ -1,0 +1,9 @@
+../Core/Src/usbd_desc.c:121:10:USBD_AUDIO_DeviceDescriptor	16	static
+../Core/Src/usbd_desc.c:133:10:USBD_AUDIO_LangIDStrDescriptor	16	static
+../Core/Src/usbd_desc.c:145:10:USBD_AUDIO_ProductStrDescriptor	16	static
+../Core/Src/usbd_desc.c:164:10:USBD_AUDIO_ManufacturerStrDescriptor	16	static
+../Core/Src/usbd_desc.c:176:10:USBD_AUDIO_SerialStrDescriptor	16	static
+../Core/Src/usbd_desc.c:192:10:USBD_AUDIO_ConfigStrDescriptor	16	static
+../Core/Src/usbd_desc.c:211:10:USBD_AUDIO_InterfaceStrDescriptor	16	static
+../Core/Src/usbd_desc.c:229:13:Get_SerialNum	24	static
+../Core/Src/usbd_desc.c:253:13:IntToUnicode	32	static

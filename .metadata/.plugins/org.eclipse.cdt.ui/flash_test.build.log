@@ -1,0 +1,53 @@
+13:16:01 **** Incremental Build of configuration Debug for project flash_test ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/usbd_conf.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F042x6 -c -I../Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO_10/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Streaming/Inc -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/usbd_conf.d" -MT"Core/Src/usbd_conf.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/usbd_conf.o"
+In file included from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h:31,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h:29,
+                 from ../Core/Inc/stm32f0xx_hal_conf.h:193,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/usbd_conf.c:21:
+../Core/Src/usbd_conf.c: In function 'USBD_LL_Setup_Fifo':
+../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:3705:60: warning: implicit declaration of function 'HAL_PCDEx_SetRxFiFo'; did you mean 'HAL_PCD_SetRxFiFo'? [-Wimplicit-function-declaration]
+ 3705 | #define HAL_PCD_SetRxFiFo                                  HAL_PCDEx_SetRxFiFo
+      |                                                            ^~~~~~~~~~~~~~~~~~~
+../Core/Src/usbd_conf.c:560:2: note: in expansion of macro 'HAL_PCD_SetRxFiFo'
+  560 |  HAL_PCD_SetRxFiFo(&hpcd, rx_fifo_size);
+      |  ^~~~~~~~~~~~~~~~~
+../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:3704:60: warning: implicit declaration of function 'HAL_PCDEx_SetTxFiFo'; did you mean 'HAL_PCD_SetTxFiFo'? [-Wimplicit-function-declaration]
+ 3704 | #define HAL_PCD_SetTxFiFo                                  HAL_PCDEx_SetTxFiFo
+      |                                                            ^~~~~~~~~~~~~~~~~~~
+../Core/Src/usbd_conf.c:563:4: note: in expansion of macro 'HAL_PCD_SetTxFiFo'
+  563 |    HAL_PCD_SetTxFiFo(&hpcd, i, tx_fifo_size[i]);
+      |    ^~~~~~~~~~~~~~~~~
+At top level:
+../Core/Src/usbd_conf.c:502:27: warning: 'USBD_LL_Setup_Fifo' defined but not used [-Wunused-function]
+  502 | static USBD_StatusTypeDef USBD_LL_Setup_Fifo(void)
+      |                           ^~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "flash_test.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\donsp\Documents\GitHub\audio_interface\flash_test\STM32F042K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="flash_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/usbd_conf.o: in function `HAL_PCD_MspInit':
+C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_conf.c:45: multiple definition of `HAL_PCD_MspInit'; ./Core/Src/stm32f0xx_hal_msp.o:C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/stm32f0xx_hal_msp.c:155: first defined here
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/usbd_conf.o: in function `HAL_PCD_MspDeInit':
+C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_conf.c:69: multiple definition of `HAL_PCD_MspDeInit'; ./Core/Src/stm32f0xx_hal_msp.o:C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/stm32f0xx_hal_msp.c:177: first defined here
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/main.o: in function `main':
+C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/main.c:113: undefined reference to `USBD_Init'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/main.c:116: undefined reference to `USBD_RegisterClass'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/main.c:119: undefined reference to `USBD_AUDIO_RegisterInterface'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/main.c:122: undefined reference to `USBD_Start'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/main.c:127: undefined reference to `USBD_AUDIO'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/main.c:127: undefined reference to `audio_class_interface'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/usbd_desc.o: in function `USBD_AUDIO_ProductStrDescriptor':
+C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_desc.c:149: undefined reference to `USBD_GetString'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_desc.c:153: undefined reference to `USBD_GetString'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/usbd_desc.o: in function `USBD_AUDIO_ManufacturerStrDescriptor':
+C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_desc.c:166: undefined reference to `USBD_GetString'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/usbd_desc.o: in function `USBD_AUDIO_ConfigStrDescriptor':
+C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_desc.c:196: undefined reference to `USBD_GetString'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_desc.c:200: undefined reference to `USBD_GetString'
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/usbd_desc.o:C:/Users/donsp/Documents/GitHub/audio_interface/flash_test/Debug/../Core/Src/usbd_desc.c:215: more undefined references to `USBD_GetString' follow
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: flash_test.elf] Error 1
+"make -j16 all" terminated with exit code 2. Build might be incomplete.
+
+13:16:02 Build Failed. 21 errors, 3 warnings. (took 466ms)
+
