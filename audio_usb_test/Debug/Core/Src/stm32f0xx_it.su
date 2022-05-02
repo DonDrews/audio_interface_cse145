@@ -1,3 +1,6 @@
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:153:13:osal_queue_send	40	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:123:20:_osal_q_lock	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:130:20:_osal_q_unlock	8	static
 ../Core/Src/stm32f0xx_it.c:70:6:NMI_Handler	0	static
 ../Core/Src/stm32f0xx_it.c:85:6:HardFault_Handler	0	static
 ../Core/Src/stm32f0xx_it.c:100:6:SVC_Handler	0	static

@@ -1,7 +1,10 @@
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:153:13:osal_queue_send	40	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:123:20:_osal_q_lock	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:130:20:_osal_q_unlock	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:321:17:advance_pointer	0	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:396:20:_tu_fifo_correct_read_pointer	8	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:126:13:_ff_pull_const_addr	32	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:427:17:_tu_fifo_peek_n	56	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:126:13:_ff_pull_const_addr	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:427:17:_tu_fifo_peek_n	48	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:103:13:_ff_push_const_addr	32	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:403:13:_tu_fifo_peek	16	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:459:17:_tu_fifo_write_n.part.0	56	static
@@ -25,4 +28,4 @@ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:8
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:868:6:tu_fifo_advance_write_pointer	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:889:6:tu_fifo_advance_read_pointer	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:909:6:tu_fifo_get_read_info	16	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:973:6:tu_fifo_get_write_info	20	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/common/tusb_fifo.c:973:6:tu_fifo_get_write_info	16	static

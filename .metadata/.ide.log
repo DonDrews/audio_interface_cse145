@@ -3893,3 +3893,6 @@
 2022-05-01 12:18:51,444 [INFO] ProjectBuilder:3167 - Suppression de : usbd_desc.c
 2022-05-01 12:18:51,444 [INFO] ProjectBuilder:3167 - Suppression de : usb_device.c
 2022-05-01 12:18:51,445 [INFO] ProjectBuilder:3167 - Suppression de : usbd_conf.c
+2022-05-01 18:42:51,360 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_External_tool_project_builders_migration_2 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-05-01 18:42:51,362 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_Prompt_before_migrating_3 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages
+2022-05-01 18:42:51,364 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] Warning: NLS missing message: ExternalToolsPreferencePage_1 in: org.eclipse.ui.externaltools.internal.ui.ExternalToolsUIMessages

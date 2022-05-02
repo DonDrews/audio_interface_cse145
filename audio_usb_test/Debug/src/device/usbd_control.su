@@ -1,8 +1,11 @@
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:153:13:osal_queue_send	40	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:123:20:_osal_q_lock	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:130:20:_osal_q_unlock	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:87:13:_data_stage_xact	16	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:66:20:_status_stage_xact.isra	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:74:6:tud_control_status	16	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:104:6:tud_control_xfer	32	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:104:6:tud_control_xfer	24	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:141:6:usbd_control_reset	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:147:6:usbd_control_set_complete_callback	0	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:153:6:usbd_control_set_request	8	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:164:6:usbd_control_xfer_cb	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/device/usbd_control.c:164:6:usbd_control_xfer_cb	16	static

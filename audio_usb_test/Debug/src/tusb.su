@@ -1,9 +1,10 @@
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:233:13:dump_str_line	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:153:13:osal_queue_send	40	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:123:20:_osal_q_lock	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:130:20:_osal_q_unlock	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:39:6:tusb_init	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:52:6:tusb_inited	8	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:71:6:tu_edpt_claim	0	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:95:6:tu_edpt_release	0	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:117:6:tu_edpt_validate	16	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:156:6:tu_edpt_bind_driver	32	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:117:6:tu_edpt_validate	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:156:6:tu_edpt_bind_driver	16	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:175:10:tu_desc_get_interface_total_len	12	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.c:252:6:tu_print_mem	56	static

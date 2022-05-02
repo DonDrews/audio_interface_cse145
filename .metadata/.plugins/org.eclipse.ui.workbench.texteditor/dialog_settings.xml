@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="PCD_SET_EP_RX_CNT"/>
+		<item key="selection" value=","/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="PCD_SET_EP_RX_CNT"/>
-			<item value="USB_EPREG_MASK"/>
-			<item value="REQ"/>
+			<item value="."/>
+			<item value="open_ep_count"/>
+			<item value="NAK"/>
+			<item value="pcd_set_ep_rx_status"/>
+			<item value="dcd_read_packet_memory"/>
+			<item value="wType"/>
+			<item value="pcd_get_eptype"/>
+			<item value="pcd_set_eptype"/>
+			<item value="pcd_set_ep_tx_status"/>
+			<item value="direction"/>
+			<item value="/* Configure VBUS Pin */"/>
+			<item value="USB"/>
+			<item value="USB_DEVICE"/>
+			<item value="USB_FS"/>
+			<item value="USB_OTG"/>
 		</list>
 		<list key="replacehistory">
+			<item value=","/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="807"/>
-		<item key="DIALOG_Y_ORIGIN" value="268"/>
+		<item key="DIALOG_X_ORIGIN" value="1128"/>
+		<item key="DIALOG_Y_ORIGIN" value="324"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

@@ -36,7 +36,7 @@ extern "C" {
 
 // defined by compiler flags for flexibility
 #define CFG_TUSB_MCU OPT_MCU_STM32F0
-#define CFG_TUSB_DEBUG 3
+//#define CFG_TUSB_DEBUG 3
 #ifndef CFG_TUSB_MCU
 #error CFG_TUSB_MCU must be defined
 #endif

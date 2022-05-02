@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "tusb.h"
+//#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -84,6 +85,13 @@ enum  {
 
 static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
 
+static uint16_t one_kHz_sine[] = {    0,   535,  1060,  1567,  2048,  2493,  2896,  3250,  3547,  3784,
+						   3956,  4061,  4096,  4061,  3956,  3784,  3547,  3250,  2896,  2493,
+						   2048,  1567,  1060,   535,     0,  -535, -1060, -1567, -2048, -2493,
+						  -2896, -3250, -3547, -3784, -3956, -4061, -4096, -4061, -3956, -3784,
+						  -3547, -3250, -2896, -2493, -2048, -1567, -1060,  -535
+					  };
+
 // Audio controls
 // Current states
 bool mute[CFG_TUD_AUDIO_FUNC_1_N_CHANNELS_TX + 1]; 				          // +1 for master channel 0
@@ -97,12 +105,12 @@ audio_control_range_4_n_t(1) sampleFreqRng; 						// Sample frequency range stat
 
 // Audio test data
 uint16_t i2s_dummy_buffer[CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO][CFG_TUD_AUDIO_FUNC_1_TX_SUPP_SW_FIFO_SZ/2];   // Ensure half word aligned
-
+/*
 int __io_putchar(int ch) {
 	HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, 0xffff);
 	return 0;
 }
-
+*/
 
 
 void audio_task(void);
@@ -388,7 +396,8 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
   (void) ep_in;
   (void) cur_alt_setting;
 
-  static uint16_t dataVal;
+  static uint32_t inc_val;
+  printf("post load --------");
 
   // Generate dummy data
   for (uint16_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
@@ -398,11 +407,14 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
     {
       for (uint8_t cnt3 = 0; cnt3 < CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX; cnt3++)
       {
-        *p_buff++ = dataVal;
+        *p_buff++ = inc_val << 10;
       }
-      dataVal++;
     }
   }
+
+  inc_val++;
+  if(inc_val >= 9)
+	  inc_val = 0;
   return true;
 }
 
@@ -565,7 +577,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
+  huart2.Init.BaudRate = 115200;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
