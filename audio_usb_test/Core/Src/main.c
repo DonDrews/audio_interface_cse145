@@ -41,6 +41,7 @@
 
 /* Private variables ---------------------------------------------------------*/
  I2S_HandleTypeDef hi2s1;
+DMA_HandleTypeDef hdma_spi1_rx;
 
 UART_HandleTypeDef huart2;
 
@@ -54,8 +55,9 @@ PCD_HandleTypeDef hpcd_USB_FS;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2S1_Init(void);
-static void MX_USART2_UART_Init(void);
+static void MX_DMA_Init(void);
 static void MX_USB_PCD_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -92,6 +94,30 @@ static uint16_t one_kHz_sine[] = {    0,   535,  1060,  1567,  2048,  2493,  289
 						  -3547, -3250, -2896, -2493, -2048, -1567, -1060,  -535
 					  };
 
+//I2S buffer pointers
+#define NUM_DMA_TRANSACTIONS 47 * 4 * 2 //47 samples per ms, 4 16 bit transactions per sample, 2ms total
+uint32_t prev_DMA_finish, curr_DMA_finish;
+uint16_t i2s_buffer[NUM_DMA_TRANSACTIONS]; //enough to hold 2ms of transactions
+
+void copy_DMA_samples(DMA_HandleTypeDef* dma) {
+	uint16_t data_len;
+	prev_DMA_finish = curr_DMA_finish;
+	//round down to the nearest full sample
+	curr_DMA_finish = (NUM_DMA_TRANSACTIONS - dma->Instance->CNDTR) & 0xFFFFFFFC;
+
+	if(prev_DMA_finish < curr_DMA_finish) {
+		data_len = (curr_DMA_finish - prev_DMA_finish) << 1;
+		tud_audio_write_support_ff(0, &i2s_buffer[prev_DMA_finish], data_len);
+	}
+	else {
+		//the DMA looped over the bridge of the circular buffer, so two separate writes are necessary
+		data_len = (NUM_DMA_TRANSACTIONS - prev_DMA_finish) << 1;
+		tud_audio_write_support_ff(0, &i2s_buffer[prev_DMA_finish], data_len);
+		data_len = curr_DMA_finish << 1;
+		tud_audio_write_support_ff(0, &i2s_buffer[0], data_len);
+	}
+}
+
 // Audio controls
 // Current states
 bool mute[CFG_TUD_AUDIO_FUNC_1_N_CHANNELS_TX + 1]; 				          // +1 for master channel 0
@@ -102,9 +128,6 @@ uint8_t clkValid;
 // Range states
 audio_control_range_2_n_t(1) volumeRng[CFG_TUD_AUDIO_FUNC_1_N_CHANNELS_TX+1]; 			// Volume range state
 audio_control_range_4_n_t(1) sampleFreqRng; 						// Sample frequency range state
-
-// Audio test data
-uint16_t i2s_dummy_buffer[CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO][CFG_TUD_AUDIO_FUNC_1_TX_SUPP_SW_FIFO_SZ/2];   // Ensure half word aligned
 /*
 int __io_putchar(int ch) {
 	HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, 0xffff);
@@ -112,8 +135,6 @@ int __io_putchar(int ch) {
 }
 */
 
-
-void audio_task(void);
 //--------------------------------------------------------------------+
 // AUDIO Task
 //--------------------------------------------------------------------+
@@ -121,7 +142,8 @@ void audio_task(void);
 void audio_task(void)
 {
   // Yet to be filled - e.g. put meas data into TX FIFOs etc.
-  // asm("nop");
+  uint16_t audio_data[20];
+  HAL_I2S_Receive(&hi2s1, audio_data, 8, 100);
 }
 
 //--------------------------------------------------------------------+
@@ -377,11 +399,13 @@ bool tud_audio_tx_done_pre_load_cb(uint8_t rhport, uint8_t itf, uint8_t ep_in, u
   (void) itf;
   (void) ep_in;
   (void) cur_alt_setting;
-
+  /*
   for (uint8_t cnt=0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
   {
-    tud_audio_write_support_ff(cnt, i2s_dummy_buffer[cnt], AUDIO_SAMPLE_RATE/1000 * CFG_TUD_AUDIO_FUNC_1_N_BYTES_PER_SAMPLE_TX * CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX);
+    tud_audio_write_support_ff(cnt, i2s_dummy_buffer[cnt], 47 * 2);
   }
+  */
+  copy_DMA_samples(&hdma_spi1_rx);
 
   return true;
 }
@@ -395,9 +419,8 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
   (void) itf;
   (void) ep_in;
   (void) cur_alt_setting;
-
-  static uint32_t inc_val;
-  printf("post load --------");
+  /*
+  static uint32_t sine_index;
 
   // Generate dummy data
   for (uint16_t cnt = 0; cnt < CFG_TUD_AUDIO_FUNC_1_N_TX_SUPP_SW_FIFO; cnt++)
@@ -407,14 +430,13 @@ bool tud_audio_tx_done_post_load_cb(uint8_t rhport, uint16_t n_bytes_copied, uin
     {
       for (uint8_t cnt3 = 0; cnt3 < CFG_TUD_AUDIO_FUNC_1_CHANNEL_PER_FIFO_TX; cnt3++)
       {
-        *p_buff++ = inc_val << 10;
+        *p_buff++ = one_kHz_sine[sine_index++];
+        if(sine_index >= 48)
+        	sine_index = 0;
       }
     }
   }
-
-  inc_val++;
-  if(inc_val >= 9)
-	  inc_val = 0;
+  */
   return true;
 }
 
@@ -457,8 +479,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2S1_Init();
-  MX_USART2_UART_Init();
+  MX_DMA_Init();
   MX_USB_PCD_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
   tusb_init();
@@ -472,6 +495,8 @@ int main(void)
   sampleFreqRng.subrange[0].bMin = AUDIO_SAMPLE_RATE;
   sampleFreqRng.subrange[0].bMax = AUDIO_SAMPLE_RATE;
   sampleFreqRng.subrange[0].bRes = 0;
+
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -545,7 +570,7 @@ static void MX_I2S1_Init(void)
 
   /* USER CODE END I2S1_Init 1 */
   hi2s1.Instance = SPI1;
-  hi2s1.Init.Mode = I2S_MODE_MASTER_TX;
+  hi2s1.Init.Mode = I2S_MODE_MASTER_RX;
   hi2s1.Init.Standard = I2S_STANDARD_PHILIPS;
   hi2s1.Init.DataFormat = I2S_DATAFORMAT_24B;
   hi2s1.Init.MCLKOutput = I2S_MCLKOUTPUT_ENABLE;
@@ -577,7 +602,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -625,6 +650,22 @@ static void MX_USB_PCD_Init(void)
   /* USER CODE BEGIN USB_Init 2 */
 
   /* USER CODE END USB_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel2_3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel2_3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel2_3_IRQn);
 
 }
 

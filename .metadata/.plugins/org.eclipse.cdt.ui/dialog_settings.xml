@@ -24,6 +24,9 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="HAL_DMA_PollForTransfer"/>
+			<item value="HAL_DMA_StateTypeDef"/>
+			<item value="HAL_State_Typedef"/>
 			<item value="osal_queue_send"/>
 		</list>
 	</section>

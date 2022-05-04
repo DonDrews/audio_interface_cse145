@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=","/>
+		<item key="selection" value="Start_IT"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="Start_IT"/>
+			<item value="HAL_DMA_Abort_IT"/>
+			<item value="CNDTR"/>
+			<item value="HAL_DMA_GET_COUNTER"/>
+			<item value="__HAL_DMA_GET_COUNTER"/>
+			<item value="DMA_HandleTypeDef"/>
+			<item value="NDT"/>
 			<item value="."/>
 			<item value="open_ep_count"/>
 			<item value="NAK"/>
@@ -16,13 +23,6 @@
 			<item value="wType"/>
 			<item value="pcd_get_eptype"/>
 			<item value="pcd_set_eptype"/>
-			<item value="pcd_set_ep_tx_status"/>
-			<item value="direction"/>
-			<item value="/* Configure VBUS Pin */"/>
-			<item value="USB"/>
-			<item value="USB_DEVICE"/>
-			<item value="USB_FS"/>
-			<item value="USB_OTG"/>
 		</list>
 		<list key="replacehistory">
 			<item value=","/>
