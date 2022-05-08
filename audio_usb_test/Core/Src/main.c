@@ -497,6 +497,10 @@ int main(void)
   sampleFreqRng.subrange[0].bRes = 0;
 
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_SET);
+
+  HAL_I2S_Receive_DMA(&hi2s1, &i2s_buffer[0], NUM_DMA_TRANSACTIONS / 2);
+  //HAL_DMA_Start(&hdma_spi1_rx, (uint32_t)&(hi2s1.Instance->DR), (uint32_t)&i2s_buffer[0], NUM_DMA_TRANSACTIONS);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -507,7 +511,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	tud_task();
-	audio_task();
+	//audio_task();
   }
   /* USER CODE END 3 */
 }
@@ -676,13 +680,39 @@ static void MX_DMA_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0|GPIO_PIN_1, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PF0 PF1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA3 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
+	HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
+}
 
 /* USER CODE END 4 */
 

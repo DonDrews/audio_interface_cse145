@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Start_IT"/>
+		<item key="selection" value="StateTypeDef"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="StateTypeDef"/>
+			<item value="audio_channel_config_t"/>
+			<item value="_nBitsUsedPerSample"/>
 			<item value="Start_IT"/>
 			<item value="HAL_DMA_Abort_IT"/>
 			<item value="CNDTR"/>
@@ -20,9 +23,6 @@
 			<item value="NAK"/>
 			<item value="pcd_set_ep_rx_status"/>
 			<item value="dcd_read_packet_memory"/>
-			<item value="wType"/>
-			<item value="pcd_get_eptype"/>
-			<item value="pcd_set_eptype"/>
 		</list>
 		<list key="replacehistory">
 			<item value=","/>
