@@ -24,6 +24,7 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="dcd_edpt_xfer"/>
 			<item value="HAL_DMA_PollForTransfer"/>
 			<item value="HAL_DMA_StateTypeDef"/>
 			<item value="HAL_State_Typedef"/>

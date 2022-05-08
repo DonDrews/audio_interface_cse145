@@ -54,8 +54,8 @@ PCD_HandleTypeDef hpcd_USB_FS;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_I2S1_Init(void);
 static void MX_DMA_Init(void);
+static void MX_I2S1_Init(void);
 static void MX_USB_PCD_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
@@ -100,6 +100,7 @@ uint32_t prev_DMA_finish, curr_DMA_finish;
 uint16_t i2s_buffer[NUM_DMA_TRANSACTIONS]; //enough to hold 2ms of transactions
 
 void copy_DMA_samples(DMA_HandleTypeDef* dma) {
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
 	uint16_t data_len;
 	prev_DMA_finish = curr_DMA_finish;
 	//round down to the nearest full sample
@@ -116,6 +117,7 @@ void copy_DMA_samples(DMA_HandleTypeDef* dma) {
 		data_len = curr_DMA_finish << 1;
 		tud_audio_write_support_ff(0, &i2s_buffer[0], data_len);
 	}
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
 }
 
 // Audio controls
@@ -134,17 +136,6 @@ int __io_putchar(int ch) {
 	return 0;
 }
 */
-
-//--------------------------------------------------------------------+
-// AUDIO Task
-//--------------------------------------------------------------------+
-
-void audio_task(void)
-{
-  // Yet to be filled - e.g. put meas data into TX FIFOs etc.
-  uint16_t audio_data[20];
-  HAL_I2S_Receive(&hi2s1, audio_data, 8, 100);
-}
 
 //--------------------------------------------------------------------+
 // Application Callback API Implementations
@@ -406,7 +397,6 @@ bool tud_audio_tx_done_pre_load_cb(uint8_t rhport, uint8_t itf, uint8_t ep_in, u
   }
   */
   copy_DMA_samples(&hdma_spi1_rx);
-
   return true;
 }
 
@@ -470,16 +460,17 @@ int main(void)
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  //MUST MOVE SysClk Config after DMA, but cubeMX will mess this order up every time code is regen
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_I2S1_Init();
   MX_DMA_Init();
+  SystemClock_Config();
+  MX_I2S1_Init();
   MX_USB_PCD_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
@@ -685,12 +676,16 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0|GPIO_PIN_1, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PF0 PF1 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
@@ -706,12 +701,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PB4 PB5 PB6 PB7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
 
 void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
-	HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_1);
+	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_6);
 }
 
 /* USER CODE END 4 */
