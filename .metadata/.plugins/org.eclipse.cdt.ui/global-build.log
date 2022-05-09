@@ -1,14 +1,33 @@
-12:55:49 **** Incremental Build of configuration Debug for project audio_usb_test ****
+00:47:02 **** Incremental Build of configuration Debug for project audio_usb_test ****
 make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g -DDEBUG -DUSE_HAL_DRIVER -DSTM32F042x6 -c -I../Core/Inc -I"C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src" -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I../Drivers/CMSIS/Include -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:90:17: warning: 'one_kHz_sine' defined but not used [-Wunused-variable]
+   90 | static uint16_t one_kHz_sine[] = { 0xaabb, 0xccdd, 0xeeff};
+      |                 ^~~~~~~~~~~~
+../Core/Src/main.c:88:17: warning: 'blink_interval_ms' defined but not used [-Wunused-variable]
+   88 | static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
+      |                 ^~~~~~~~~~~~~~~~~
+In file included from C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal.h:48,
+                 from C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/tusb.h:38,
+                 from ../Core/Src/main.c:24:
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:153:13: warning: 'osal_queue_send' defined but not used [-Wunused-function]
+  153 | static bool osal_queue_send(osal_queue_t qhdl, void const * data, bool in_isr)
+      |             ^~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "audio_usb_test.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\donsp\Documents\GitHub\audio_interface\audio_usb_test\STM32F042K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="audio_usb_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: audio_usb_test.elf
+ 
 arm-none-eabi-size   audio_usb_test.elf 
+arm-none-eabi-objdump -h -S  audio_usb_test.elf  > "audio_usb_test.list"
    text	   data	    bss	    dec	    hex	filename
-  21416	    168	   4944	  26528	   67a0	audio_usb_test.elf
+  21460	    168	   5008	  26636	   680c	audio_usb_test.elf
 Finished building: default.size.stdout
  
-12:55:56 **** Incremental Build of configuration Debug for project audio_usb_test ****
+Finished building: audio_usb_test.list
+ 
+00:47:10 **** Incremental Build of configuration Debug for project audio_usb_test ****
 make -j16 all 
 arm-none-eabi-size   audio_usb_test.elf 
    text	   data	    bss	    dec	    hex	filename
-  21416	    168	   4944	  26528	   67a0	audio_usb_test.elf
+  21460	    168	   5008	  26636	   680c	audio_usb_test.elf
 Finished building: default.size.stdout
  

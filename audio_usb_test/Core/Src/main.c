@@ -87,17 +87,23 @@ enum  {
 
 static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
 
-static uint16_t one_kHz_sine[] = {    0,   535,  1060,  1567,  2048,  2493,  2896,  3250,  3547,  3784,
-						   3956,  4061,  4096,  4061,  3956,  3784,  3547,  3250,  2896,  2493,
-						   2048,  1567,  1060,   535,     0,  -535, -1060, -1567, -2048, -2493,
-						  -2896, -3250, -3547, -3784, -3956, -4061, -4096, -4061, -3956, -3784,
-						  -3547, -3250, -2896, -2493, -2048, -1567, -1060,  -535
-					  };
+static uint16_t one_kHz_sine[] = { 0xaabb, 0xccdd, 0xeeff};
 
 //I2S buffer pointers
 #define NUM_DMA_TRANSACTIONS 47 * 4 * 2 //47 samples per ms, 4 16 bit transactions per sample, 2ms total
 uint32_t prev_DMA_finish, curr_DMA_finish;
 uint16_t i2s_buffer[NUM_DMA_TRANSACTIONS]; //enough to hold 2ms of transactions
+
+//length in number of bytes
+void swap_endian_i2s(uint16_t* start_addr, uint32_t length){
+	if((uint32_t)(start_addr) & 0x1)
+		__asm("BKPT");
+	uint16_t* stop = start_addr + (length >> 1);
+	while(start_addr < stop) {
+		*start_addr = *start_addr << 8 | *start_addr >> 8;
+		start_addr++;
+	}
+}
 
 void copy_DMA_samples(DMA_HandleTypeDef* dma) {
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
@@ -108,13 +114,16 @@ void copy_DMA_samples(DMA_HandleTypeDef* dma) {
 
 	if(prev_DMA_finish < curr_DMA_finish) {
 		data_len = (curr_DMA_finish - prev_DMA_finish) << 1;
+		swap_endian_i2s(&i2s_buffer[prev_DMA_finish], data_len);
 		tud_audio_write_support_ff(0, &i2s_buffer[prev_DMA_finish], data_len);
 	}
 	else {
 		//the DMA looped over the bridge of the circular buffer, so two separate writes are necessary
 		data_len = (NUM_DMA_TRANSACTIONS - prev_DMA_finish) << 1;
+		swap_endian_i2s(&i2s_buffer[prev_DMA_finish], data_len);
 		tud_audio_write_support_ff(0, &i2s_buffer[prev_DMA_finish], data_len);
 		data_len = curr_DMA_finish << 1;
+		swap_endian_i2s(&i2s_buffer[0], data_len);
 		tud_audio_write_support_ff(0, &i2s_buffer[0], data_len);
 	}
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
