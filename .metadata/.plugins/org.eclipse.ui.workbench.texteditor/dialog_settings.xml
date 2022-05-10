@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="max_packet_size"/>
+		<item key="selection" value="dtog"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="dtog"/>
 			<item value="max_packet_size"/>
 			<item value="xfer_ctl_t"/>
 			<item value="total_bytes"/>
@@ -22,7 +23,6 @@
 			<item value="Start_IT"/>
 			<item value="HAL_DMA_Abort_IT"/>
 			<item value="CNDTR"/>
-			<item value="HAL_DMA_GET_COUNTER"/>
 		</list>
 		<list key="replacehistory">
 			<item value=","/>

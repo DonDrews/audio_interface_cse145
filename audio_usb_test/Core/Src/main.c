@@ -96,8 +96,6 @@ uint16_t i2s_buffer[NUM_DMA_TRANSACTIONS]; //enough to hold 2ms of transactions
 
 //length in number of bytes
 void swap_endian_i2s(uint16_t* start_addr, uint32_t length){
-	if((uint32_t)(start_addr) & 0x1)
-		__asm("BKPT");
 	uint16_t* stop = start_addr + (length >> 1);
 	while(start_addr < stop) {
 		*start_addr = *start_addr << 8 | *start_addr >> 8;
@@ -105,12 +103,14 @@ void swap_endian_i2s(uint16_t* start_addr, uint32_t length){
 	}
 }
 
+uint8_t header_sel = 0;
 void copy_DMA_samples(DMA_HandleTypeDef* dma) {
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
 	uint16_t data_len;
 	prev_DMA_finish = curr_DMA_finish;
 	//round down to the nearest full sample
 	curr_DMA_finish = (NUM_DMA_TRANSACTIONS - dma->Instance->CNDTR) & 0xFFFFFFFC;
+	i2s_buffer[prev_DMA_finish] = (header_sel) ? 0xDEAD : 0xBEEF;
+	header_sel = ~header_sel;
 
 	if(prev_DMA_finish < curr_DMA_finish) {
 		data_len = (curr_DMA_finish - prev_DMA_finish) << 1;
@@ -126,7 +126,6 @@ void copy_DMA_samples(DMA_HandleTypeDef* dma) {
 		swap_endian_i2s(&i2s_buffer[0], data_len);
 		tud_audio_write_support_ff(0, &i2s_buffer[0], data_len);
 	}
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
 }
 
 // Audio controls
@@ -720,10 +719,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s) {
-	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_6);
-}
 
 /* USER CODE END 4 */
 
