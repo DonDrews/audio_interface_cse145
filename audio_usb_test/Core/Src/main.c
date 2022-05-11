@@ -98,8 +98,11 @@ uint16_t i2s_buffer[NUM_DMA_TRANSACTIONS]; //enough to hold 2ms of transactions
 void swap_endian_i2s(uint16_t* start_addr, uint32_t length){
 	uint16_t* stop = start_addr + (length >> 1);
 	while(start_addr < stop) {
-		*start_addr = *start_addr << 8 | *start_addr >> 8;
-		start_addr++;
+		//*start_addr = *start_addr << 8 | *start_addr >> 8;
+		uint16_t temp = *(start_addr + 1);
+		*(start_addr + 1) = *start_addr;
+		*start_addr = temp;
+		start_addr += 2;
 	}
 }
 
@@ -109,7 +112,6 @@ void copy_DMA_samples(DMA_HandleTypeDef* dma) {
 	prev_DMA_finish = curr_DMA_finish;
 	//round down to the nearest full sample
 	curr_DMA_finish = (NUM_DMA_TRANSACTIONS - dma->Instance->CNDTR) & 0xFFFFFFFC;
-	i2s_buffer[prev_DMA_finish] = (header_sel) ? 0xDEAD : 0xBEEF;
 	header_sel = ~header_sel;
 
 	if(prev_DMA_finish < curr_DMA_finish) {
