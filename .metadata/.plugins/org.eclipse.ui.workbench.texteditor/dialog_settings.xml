@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="HAL"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="HAL"/>
+			<item value="HAL_GPIO_Toggle"/>
+			<item value="HAL_GPIO_Write"/>
 			<item value="GPIO"/>
+			<item value="HAL"/>
 			<item value="dtog"/>
 			<item value="max_packet_size"/>
 			<item value="xfer_ctl_t"/>
@@ -21,8 +23,6 @@
 			<item value="CIRCULAR"/>
 			<item value="StateTypeDef"/>
 			<item value="audio_channel_config_t"/>
-			<item value="_nBitsUsedPerSample"/>
-			<item value="Start_IT"/>
 		</list>
 		<list key="replacehistory">
 			<item value=","/>

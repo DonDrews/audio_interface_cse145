@@ -25,7 +25,7 @@ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fs
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:602:6:dcd_int_handler	48	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:879:6:dcd_edpt_close_all	0	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:892:6:dcd_edpt_close	16	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:971:6:dcd_edpt_xfer	24	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:964:6:dcd_edpt_xfer	24	static
 C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:390:6:dcd_set_address	8	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:1052:6:dcd_edpt_stall	8	static
-C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:1069:6:dcd_edpt_clear_stall	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:1045:6:dcd_edpt_stall	8	static
+C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/portable/st/stm32_fsdev/dcd_stm32_fsdev.c:1062:6:dcd_edpt_clear_stall	8	static
