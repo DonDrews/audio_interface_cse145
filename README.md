@@ -13,7 +13,14 @@ Inside the [audio_interface](audio_interface) subfolder, there is a KiCAD projec
 There is a [test log](https://docs.google.com/document/d/14NlvdZo9BEKJ16lZTaRw5GM3TA98BqlqD3HZuE-fhHs/edit?usp=sharing) which documents all the of the properties of the design, comparing the measured vs expected values. In addition, a listing at the bottom functions as a notebook to record which rework was performed on which day, and other observations.
 
 ## Audio Quality
-There is a short recording demonstrating both inputs in the [docs](docs) directory. In addition, here are some frequency plots showing the results from recording a generated sine wave on both inputs. As you can see there is currently some noise and distortion that is being worked out.
+There is a short recording demonstrating both inputs in the [docs](docs) directory. In addition, below is a frequency plot showing the results from recording a generated 1kHz sine wave on the instrument input. Currently the noise floor is low, but there is some distortion which can hopefully be resolved with further board modifications.
+![1kHz Sine Wave](docs/sine_real.png)
 
 ## Contributors
 
+Many colleagues contributed to this project, and it could not have worked without their help with these sections:
+
+- Ravi Johnson - electrical design reviews, assembly
+- Devanshi Jain - electrical testing
+- Seeraj Somla - systems engineering
+- Nathan Hui, Christopher Crutchfield - advising
