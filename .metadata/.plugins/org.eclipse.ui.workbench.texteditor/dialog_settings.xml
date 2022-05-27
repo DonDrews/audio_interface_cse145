@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="47"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="47"/>
 			<item value="HAL_GPIO_Toggle"/>
 			<item value="HAL_GPIO_Write"/>
 			<item value="GPIO"/>
@@ -22,7 +23,6 @@
 			<item value="ciular"/>
 			<item value="CIRCULAR"/>
 			<item value="StateTypeDef"/>
-			<item value="audio_channel_config_t"/>
 		</list>
 		<list key="replacehistory">
 			<item value=","/>

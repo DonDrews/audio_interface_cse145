@@ -13,5 +13,5 @@ C:/Users/donsp/Documents/GitHub/audio_interface/tinyusb/src/osal/osal_none.h:130
 ../Core/Src/main.c:412:6:tud_audio_tx_done_post_load_cb	0	static
 ../Core/Src/main.c:440:6:tud_audio_set_itf_close_EP_cb	0	static
 ../Core/Src/main.c:525:6:SystemClock_Config	104	static,ignoring_inline_asm
-../Core/Src/main.c:454:5:main	48	static,ignoring_inline_asm
+../Core/Src/main.c:454:5:main	56	static,ignoring_inline_asm
 ../Core/Src/main.c:703:6:Error_Handler	0	static,ignoring_inline_asm

@@ -52,8 +52,8 @@ PCD_HandleTypeDef hpcd_USB_FS;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_DMA_Init(void);
 static void MX_I2S1_Init(void);
+static void MX_DMA_Init(void);
 static void MX_USB_PCD_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -87,7 +87,7 @@ static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
 static uint16_t one_kHz_sine[] = { 0xaabb, 0xccdd, 0xeeff};
 
 //I2S buffer pointers
-#define NUM_DMA_TRANSACTIONS 47 * 4 * 2 //47 samples per ms, 4 16 bit transactions per sample, 2ms total
+#define NUM_DMA_TRANSACTIONS 49 * 4 * 2 //48 samples per ms (and one extra for tolerance), 4 16 bit transactions per sample, 2ms total
 uint32_t prev_DMA_finish, curr_DMA_finish;
 uint16_t i2s_buffer[NUM_DMA_TRANSACTIONS]; //enough to hold 2ms of transactions
 
@@ -474,9 +474,9 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_DMA_Init();
   SystemClock_Config();
+  MX_DMA_Init();
+  MX_GPIO_Init();
   MX_I2S1_Init();
   MX_USB_PCD_Init();
   /* USER CODE BEGIN 2 */
@@ -576,10 +576,10 @@ static void MX_I2S1_Init(void)
 
   /* USER CODE END I2S1_Init 1 */
   hi2s1.Instance = SPI1;
-  hi2s1.Init.Mode = I2S_MODE_MASTER_RX;
+  hi2s1.Init.Mode = I2S_MODE_SLAVE_RX;
   hi2s1.Init.Standard = I2S_STANDARD_PHILIPS;
   hi2s1.Init.DataFormat = I2S_DATAFORMAT_24B;
-  hi2s1.Init.MCLKOutput = I2S_MCLKOUTPUT_ENABLE;
+  hi2s1.Init.MCLKOutput = I2S_MCLKOUTPUT_DISABLE;
   hi2s1.Init.AudioFreq = I2S_AUDIOFREQ_48K;
   hi2s1.Init.CPOL = I2S_CPOL_LOW;
   if (HAL_I2S_Init(&hi2s1) != HAL_OK)

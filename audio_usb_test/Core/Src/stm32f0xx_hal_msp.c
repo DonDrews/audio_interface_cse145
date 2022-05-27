@@ -98,10 +98,9 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
     /**I2S1 GPIO Configuration
     PA4     ------> I2S1_WS
     PA5     ------> I2S1_CK
-    PA6     ------> I2S1_MCK
     PA7     ------> I2S1_SD
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_7;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -117,7 +116,7 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
     hdma_spi1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
     hdma_spi1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
     hdma_spi1_rx.Init.Mode = DMA_CIRCULAR;
-    hdma_spi1_rx.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_spi1_rx.Init.Priority = DMA_PRIORITY_LOW;
     if (HAL_DMA_Init(&hdma_spi1_rx) != HAL_OK)
     {
       Error_Handler();
@@ -151,10 +150,9 @@ void HAL_I2S_MspDeInit(I2S_HandleTypeDef* hi2s)
     /**I2S1 GPIO Configuration
     PA4     ------> I2S1_WS
     PA5     ------> I2S1_CK
-    PA6     ------> I2S1_MCK
     PA7     ------> I2S1_SD
     */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_7);
 
     /* I2S1 DMA DeInit */
     HAL_DMA_DeInit(hi2s->hdmarx);
