@@ -105,6 +105,7 @@ void swap_endian_i2s(uint16_t* start_addr, uint32_t length){
 
 uint8_t header_sel = 0;
 void copy_DMA_samples(DMA_HandleTypeDef* dma) {
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 	uint16_t data_len;
 	prev_DMA_finish = curr_DMA_finish;
 	//round down to the nearest full sample
@@ -125,6 +126,7 @@ void copy_DMA_samples(DMA_HandleTypeDef* dma) {
 		swap_endian_i2s(&i2s_buffer[0], data_len);
 		tud_audio_write_support_ff(0, &i2s_buffer[0], data_len);
 	}
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 }
 
 // Audio controls
@@ -474,8 +476,8 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  SystemClock_Config();
   MX_DMA_Init();
+  SystemClock_Config();
   MX_GPIO_Init();
   MX_I2S1_Init();
   MX_USB_PCD_Init();
@@ -494,7 +496,6 @@ int main(void)
   sampleFreqRng.subrange[0].bRes = 0;
 
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, GPIO_PIN_SET);
 
   HAL_I2S_Receive_DMA(&hi2s1, &i2s_buffer[0], NUM_DMA_TRANSACTIONS / 2);
   //HAL_DMA_Start(&hdma_spi1_rx, (uint32_t)&(hi2s1.Instance->DR), (uint32_t)&i2s_buffer[0], NUM_DMA_TRANSACTIONS);
@@ -509,7 +510,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	tud_task();
 	GPIO_PinState l_clip = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, l_clip);
+	//HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0, l_clip);
 
 	GPIO_PinState r_clip = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2);
 	HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, r_clip);
@@ -531,7 +532,8 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
@@ -543,11 +545,11 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI48;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSE;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
@@ -576,7 +578,7 @@ static void MX_I2S1_Init(void)
 
   /* USER CODE END I2S1_Init 1 */
   hi2s1.Instance = SPI1;
-  hi2s1.Init.Mode = I2S_MODE_SLAVE_RX;
+  hi2s1.Init.Mode = I2S_MODE_MASTER_RX;
   hi2s1.Init.Standard = I2S_STANDARD_PHILIPS;
   hi2s1.Init.DataFormat = I2S_DATAFORMAT_24B;
   hi2s1.Init.MCLKOutput = I2S_MCLKOUTPUT_DISABLE;
@@ -655,7 +657,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_0|GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_1, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
@@ -663,8 +665,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PF0 PF1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
+  /*Configure GPIO pin : PF1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
