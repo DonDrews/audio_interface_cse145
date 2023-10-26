@@ -1,8 +1,10 @@
 # USB Audio Interface
 
-This repo (will) contain firmware, schematics, and instructions for creating a functional audio interface usable cross-platform over USB. The current design supports one balanced XLR input with 80dB gain, and a 1/4 inch input with 40dB gain.
+This repo contains firmware, schematics, and instructions for creating a functional audio interface usable cross-platform over USB. The current design supports one balanced XLR input with 80dB gain, and a 1/4 inch input with 40dB gain.
 
 This design was created for the course CSE 145: Embedded Systems Design Project at UCSD in Spring 2022.
+
+See [here](https://dondrews.github.io/posts/audio-interface/) for a writeup describing the final product.
 
 ![Systems Diagram](docs/sys_diagram.png)
 
